@@ -1,20 +1,5 @@
 <script setup>
-import Checkbox from '@/Components/Checkbox.vue';
-import GuestLayout from '@/Layouts/GuestLayout.vue';
-import InputError from '@/Components/InputError.vue';
-import InputLabel from '@/Components/InputLabel.vue';
-import PrimaryButton from '@/Components/PrimaryButton.vue';
-import TextInput from '@/Components/TextInput.vue';
 import { Head, Link, useForm } from '@inertiajs/vue3';
-
-defineProps({
-    canResetPassword: {
-        type: Boolean,
-    },
-    status: {
-        type: String,
-    },
-});
 
 const form = useForm({
     email: '',
@@ -30,71 +15,94 @@ const submit = () => {
 </script>
 
 <template>
-    <GuestLayout>
-        <Head title="Log in" />
+    <Head title="Login" />
 
-        <div v-if="status" class="mb-4 text-sm font-medium text-green-600">
-            {{ status }}
-        </div>
+    <div class="min-h-screen flex items-center justify-center bg-cover bg-center relative"
+         style="background-image: url('/assets/bg-texture.png');">
+        <!-- Overlay untuk efek gelap -->
+        <div class="absolute inset-0 bg-black/60"></div>
 
-        <form @submit.prevent="submit">
-            <div>
-                <InputLabel for="email" value="Email" />
+        <!-- Card Login -->
+        <div class="relative z-10 bg-black p-8 rounded-lg shadow-lg w-full max-w-md">
+            <h2 class="text-3xl font-bold text-center text-lime-400">Login</h2>
+            <p class="text-sm text-center text-gray-400 mb-6">Welcome back! Please log in to access your account.</p>
 
-                <TextInput
-                    id="email"
-                    type="email"
-                    class="mt-1 block w-full"
-                    v-model="form.email"
-                    required
-                    autofocus
-                    autocomplete="username"
-                />
+            <form @submit.prevent="submit" class="space-y-4">
+                <!-- Input Email -->
+                <div>
+                    <input
+                        type="email"
+                        v-model="form.email"
+                        placeholder="Enter your Email"
+                        class="w-full px-4 py-2 rounded-md bg-gray-800 text-white focus:outline-none focus:ring-2 focus:ring-lime-400"
+                        required
+                    />
+                </div>
 
-                <InputError class="mt-2" :message="form.errors.email" />
-            </div>
+                <!-- Input Password -->
+                <div>
+                    <input
+                        type="password"
+                        v-model="form.password"
+                        placeholder="Enter your Password"
+                        class="w-full px-4 py-2 rounded-md bg-gray-800 text-white focus:outline-none focus:ring-2 focus:ring-lime-400"
+                        required
+                    />
+                </div>
 
-            <div class="mt-4">
-                <InputLabel for="password" value="Password" />
-
-                <TextInput
-                    id="password"
-                    type="password"
-                    class="mt-1 block w-full"
-                    v-model="form.password"
-                    required
-                    autocomplete="current-password"
-                />
-
-                <InputError class="mt-2" :message="form.errors.password" />
-            </div>
-
-            <div class="mt-4 block">
-                <label class="flex items-center">
-                    <Checkbox name="remember" v-model:checked="form.remember" />
-                    <span class="ms-2 text-sm text-gray-600"
-                        >Remember me</span
+                <!-- Forgot Password -->
+                <div class="text-right">
+                    <Link
+                        :href="route('password.request')"
+                        class="text-sm text-lime-400 hover:underline"
                     >
-                </label>
-            </div>
+                        Forgot Password?
+                    </Link>
+                </div>
 
-            <div class="mt-4 flex items-center justify-end">
-                <Link
-                    v-if="canResetPassword"
-                    :href="route('password.request')"
-                    class="rounded-md text-sm text-gray-600 underline hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-                >
-                    Forgot your password?
-                </Link>
-
-                <PrimaryButton
-                    class="ms-4"
-                    :class="{ 'opacity-25': form.processing }"
+                <!-- Tombol Login -->
+                <button
+                    type="submit"
+                    class="w-full bg-lime-400 text-black font-semibold py-2 rounded-md hover:bg-lime-300"
                     :disabled="form.processing"
                 >
-                    Log in
-                </PrimaryButton>
+                    Login
+                </button>
+
+                <!-- Tombol Sign Up -->
+                <button
+                    type="button"
+                    class="w-full bg-gray-800 text-white font-semibold py-2 rounded-md hover:bg-gray-700"
+                >
+                    Sign Up
+                </button>
+            </form>
+
+            <!-- Garis Pemisah -->
+            <div class="flex items-center my-4">
+                <hr class="flex-grow border-gray-700" />
+                <span class="mx-2 text-gray-400 text-sm">Or Continue with</span>
+                <hr class="flex-grow border-gray-700" />
             </div>
-        </form>
-    </GuestLayout>
+
+            <!-- Tombol Sosial Media -->
+            <div class="flex justify-center space-x-4">
+                <button class="p-2 bg-gray-800 rounded-full hover:bg-gray-700">
+                    <img src="/assets/google-icon.svg" alt="Google" class="w-6 h-6" />
+                </button>
+                <button class="p-2 bg-gray-800 rounded-full hover:bg-gray-700">
+                    <img src="/assets/facebook-icon.svg" alt="Facebook" class="w-6 h-6" />
+                </button>
+                <button class="p-2 bg-gray-800 rounded-full hover:bg-gray-700">
+                    <img src="/assets/apple-icon.svg" alt="Apple" class="w-6 h-6" />
+                </button>
+            </div>
+        </div>
+    </div>
 </template>
+
+<style scoped>
+input::placeholder {
+    color: #9ca3af;
+}
+</style>
