@@ -1,9 +1,4 @@
 <script setup>
-import GuestLayout from '@/Layouts/GuestLayout.vue';
-import InputError from '@/Components/InputError.vue';
-import InputLabel from '@/Components/InputLabel.vue';
-import PrimaryButton from '@/Components/PrimaryButton.vue';
-import TextInput from '@/Components/TextInput.vue';
 import { Head, Link, useForm } from '@inertiajs/vue3';
 
 const form = useForm({
@@ -21,93 +16,97 @@ const submit = () => {
 </script>
 
 <template>
-    <GuestLayout>
-        <Head title="Register" />
+    <Head title="Register" />
 
-        <form @submit.prevent="submit">
-            <div>
-                <InputLabel for="name" value="Name" />
+    <div class="min-h-screen flex items-center justify-center bg-cover bg-center relative"
+         style="background-image: url('/assets/login.png');">
+        <!-- Overlay untuk efek gelap -->
+        <div class="absolute inset-0 bg-black/30"></div>
 
-                <TextInput
-                    id="name"
-                    type="text"
-                    class="mt-1 block w-full"
-                    v-model="form.name"
-                    required
-                    autofocus
-                    autocomplete="name"
-                />
+        <!-- Card Register -->
+        <div class="relative z-10 bg-black p-8 rounded-lg shadow-lg w-full max-w-md">
+            <h2 class="text-3xl font-bold text-center text-lime-400">Register</h2>
+            <p class="text-sm text-center text-gray-400 mb-6">Create your account to get started!</p>
 
-                <InputError class="mt-2" :message="form.errors.name" />
-            </div>
+            <form @submit.prevent="submit" class="space-y-4">
+                <!-- Input Name -->
+                <div>
+                    <input
+                        type="text"
+                        v-model="form.name"
+                        placeholder="Enter your Name"
+                        class="w-full px-4 py-2 rounded-md bg-gray-800 text-white focus:outline-none focus:ring-2 focus:ring-lime-400"
+                        required
+                    />
+                    <p v-if="form.errors.name" class="text-red-400 text-sm mt-1">{{ form.errors.name }}</p>
+                </div>
 
-            <div class="mt-4">
-                <InputLabel for="email" value="Email" />
+                <!-- Input Email -->
+                <div>
+                    <input
+                        type="email"
+                        v-model="form.email"
+                        placeholder="Enter your Email"
+                        class="w-full px-4 py-2 rounded-md bg-gray-800 text-white focus:outline-none focus:ring-2 focus:ring-lime-400"
+                        required
+                    />
+                    <p v-if="form.errors.email" class="text-red-400 text-sm mt-1">{{ form.errors.email }}</p>
+                </div>
 
-                <TextInput
-                    id="email"
-                    type="email"
-                    class="mt-1 block w-full"
-                    v-model="form.email"
-                    required
-                    autocomplete="username"
-                />
+                <!-- Input Password -->
+                <div>
+                    <input
+                        type="password"
+                        v-model="form.password"
+                        placeholder="Enter your Password"
+                        class="w-full px-4 py-2 rounded-md bg-gray-800 text-white focus:outline-none focus:ring-2 focus:ring-lime-400"
+                        required
+                    />
+                    <p v-if="form.errors.password" class="text-red-400 text-sm mt-1">{{ form.errors.password }}</p>
+                </div>
 
-                <InputError class="mt-2" :message="form.errors.email" />
-            </div>
+                <!-- Input Password Confirmation -->
+                <div>
+                    <input
+                        type="password"
+                        v-model="form.password_confirmation"
+                        placeholder="Confirm your Password"
+                        class="w-full px-4 py-2 rounded-md bg-gray-800 text-white focus:outline-none focus:ring-2 focus:ring-lime-400"
+                        required
+                    />
+                    <p v-if="form.errors.password_confirmation" class="text-red-400 text-sm mt-1">
+                        {{ form.errors.password_confirmation }}
+                    </p>
+                </div>
 
-            <div class="mt-4">
-                <InputLabel for="password" value="Password" />
-
-                <TextInput
-                    id="password"
-                    type="password"
-                    class="mt-1 block w-full"
-                    v-model="form.password"
-                    required
-                    autocomplete="new-password"
-                />
-
-                <InputError class="mt-2" :message="form.errors.password" />
-            </div>
-
-            <div class="mt-4">
-                <InputLabel
-                    for="password_confirmation"
-                    value="Confirm Password"
-                />
-
-                <TextInput
-                    id="password_confirmation"
-                    type="password"
-                    class="mt-1 block w-full"
-                    v-model="form.password_confirmation"
-                    required
-                    autocomplete="new-password"
-                />
-
-                <InputError
-                    class="mt-2"
-                    :message="form.errors.password_confirmation"
-                />
-            </div>
-
-            <div class="mt-4 flex items-center justify-end">
-                <Link
-                    :href="route('login')"
-                    class="rounded-md text-sm text-gray-600 underline hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-                >
-                    Already registered?
-                </Link>
-
-                <PrimaryButton
-                    class="ms-4"
-                    :class="{ 'opacity-25': form.processing }"
+                <!-- Tombol Register -->
+                <button
+                    type="submit"
+                    class="w-full bg-lime-400 text-black font-semibold py-2 rounded-md hover:bg-lime-300"
                     :disabled="form.processing"
                 >
                     Register
-                </PrimaryButton>
-            </div>
-        </form>
-    </GuestLayout>
+                </button>
+
+                <!-- Link ke Login -->
+                <div class="text-center mt-4">
+                    <p class="text-gray-400 text-sm">
+                        Already have an account?
+                        <Link
+                            :href="route('login')"
+                            class="text-lime-400 hover:underline"
+                        >
+                            Login here
+                        </Link>
+                    </p>
+                </div>
+            </form>
+        </div>
+    </div>
 </template>
+
+<style scoped>
+input::placeholder {
+    color: #9ca3af;
+}
+</style>
