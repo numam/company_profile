@@ -40,10 +40,10 @@ class CompanyProfileController extends Controller
         ]);
     }
 
-    public function services()
+    public function layanan()
     {
-        return Inertia::render('Services', [
-            'services' => [
+        return Inertia::render('Layanan/Layanan', [
+            'layanan' => [
                 [
                     'title' => 'Web Development',
                     'description' => 'Custom web applications tailored to your needs',
@@ -56,12 +56,13 @@ class CompanyProfileController extends Controller
                 ],
                 [
                     'title' => 'Cloud Solutions',
-                    'description' => 'Scalable cloud infrastructure and services',
+                    'description' => 'Scalable cloud infrastructure and layanan',
                     'icon' => 'cloud'
                 ]
             ]
         ]);
     }
+
 
     public function contact()
     {

@@ -10,7 +10,7 @@ use Inertia\Inertia;
 Route::controller(CompanyProfileController::class)->group(function () {
     Route::get('/', 'index')->name('home');
     Route::get('/about', 'about')->name('about');
-    Route::get('/services', 'services')->name('services');
+    Route::get('/layanan', [CompanyProfileController::class, 'layanan'])->name('layanan');
     Route::get('/portfolio', 'portfolio')->name('portfolio');
     Route::get('/contact', 'contact')->name('contact');
     Route::post('/contact', 'submitContact')->name('contact.submit');
