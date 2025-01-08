@@ -18,9 +18,9 @@ const submit = () => {
     <Head title="Login" />
 
     <div class="min-h-screen flex items-center justify-center bg-cover bg-center relative"
-         style="background-image: url('/assets/bg-texture.png');">
+         style="background-image: url('/assets/login.png');">
         <!-- Overlay untuk efek gelap -->
-        <div class="absolute inset-0 bg-black/60"></div>
+        <div class="absolute inset-0 bg-black/30"></div>
 
         <!-- Card Login -->
         <div class="relative z-10 bg-black p-8 rounded-lg shadow-lg w-full max-w-md">
@@ -83,19 +83,6 @@ const submit = () => {
                 <hr class="flex-grow border-gray-700" />
                 <span class="mx-2 text-gray-400 text-sm">Or Continue with</span>
                 <hr class="flex-grow border-gray-700" />
-            </div>
-
-            <!-- Tombol Sosial Media -->
-            <div class="flex justify-center space-x-4">
-                <button class="p-2 bg-gray-800 rounded-full hover:bg-gray-700">
-                    <img src="/assets/google-icon.svg" alt="Google" class="w-6 h-6" />
-                </button>
-                <button class="p-2 bg-gray-800 rounded-full hover:bg-gray-700">
-                    <img src="/assets/facebook-icon.svg" alt="Facebook" class="w-6 h-6" />
-                </button>
-                <button class="p-2 bg-gray-800 rounded-full hover:bg-gray-700">
-                    <img src="/assets/apple-icon.svg" alt="Apple" class="w-6 h-6" />
-                </button>
             </div>
         </div>
     </div>
