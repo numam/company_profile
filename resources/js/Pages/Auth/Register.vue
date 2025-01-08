@@ -24,7 +24,7 @@ const submit = () => {
         <div class="absolute inset-0 bg-black/30"></div>
 
         <!-- Card Register -->
-        <div class="relative z-10 bg-black p-8 rounded-lg shadow-lg w-full max-w-md">
+        <div class="relative z-10 bg-primary p-8 rounded-lg shadow-lg w-full max-w-md">
             <h2 class="text-3xl font-bold text-center text-lime-400">Register</h2>
             <p class="text-sm text-center text-gray-400 mb-6">Create your account to get started!</p>
 

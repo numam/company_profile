@@ -23,7 +23,7 @@ const submit = () => {
         <div class="absolute inset-0 bg-black/30"></div>
 
         <!-- Card Login -->
-        <div class="relative z-10 bg-black p-8 rounded-lg shadow-lg w-full max-w-md">
+        <div class="relative z-10 bg-primary p-8 rounded-lg shadow-lg w-full max-w-md">
             <h2 class="text-3xl font-bold text-center text-lime-400">Login</h2>
             <p class="text-sm text-center text-gray-400 mb-6">Welcome back! Please log in to access your account.</p>
 
@@ -63,7 +63,7 @@ const submit = () => {
                 <!-- Tombol Login -->
                 <button
                     type="submit"
-                    class="w-full bg-lime-400 text-black font-semibold py-2 rounded-md hover:bg-lime-300"
+                    class="w-full bg-secondary text-black font-semibold py-2 rounded-md hover:bg-secondary-300"
                     :disabled="form.processing"
                 >
                     Login

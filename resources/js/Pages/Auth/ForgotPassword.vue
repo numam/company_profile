@@ -1,9 +1,4 @@
 <script setup>
-import GuestLayout from '@/Layouts/GuestLayout.vue';
-import InputError from '@/Components/InputError.vue';
-import InputLabel from '@/Components/InputLabel.vue';
-import PrimaryButton from '@/Components/PrimaryButton.vue';
-import TextInput from '@/Components/TextInput.vue';
 import { Head, useForm } from '@inertiajs/vue3';
 
 defineProps({
@@ -22,47 +17,64 @@ const submit = () => {
 </script>
 
 <template>
-    <GuestLayout>
-        <Head title="Forgot Password" />
+    <Head title="Forgot Password" />
 
-        <div class="mb-4 text-sm text-gray-600">
-            Forgot your password? No problem. Just let us know your email
-            address and we will email you a password reset link that will allow
-            you to choose a new one.
-        </div>
+    <div class="min-h-screen flex items-center justify-center bg-cover bg-center relative"
+        style="background-image: url('/assets/login.png');">
+        <!-- Overlay untuk efek gelap -->
+        <div class="absolute inset-0 bg-black/30"></div>
 
-        <div
-            v-if="status"
-            class="mb-4 text-sm font-medium text-green-600"
-        >
-            {{ status }}
-        </div>
+        <!-- Card Forgot Password -->
+        <div class="relative z-10 bg-primary p-8 rounded-lg shadow-lg w-full max-w-md">
+            <h2 class="text-3xl font-bold text-center text-lime-400">Forgot Password</h2>
+            <p class="text-sm text-center text-gray-400 mb-6">
+                Enter your email, and we'll send you a password reset link.
+            </p>
 
-        <form @submit.prevent="submit">
-            <div>
-                <InputLabel for="email" value="Email" />
-
-                <TextInput
-                    id="email"
-                    type="email"
-                    class="mt-1 block w-full"
-                    v-model="form.email"
-                    required
-                    autofocus
-                    autocomplete="username"
-                />
-
-                <InputError class="mt-2" :message="form.errors.email" />
+            <!-- Status Message -->
+            <div v-if="status" class="mb-4 text-sm font-medium text-green-500 text-center">
+                {{ status }}
             </div>
 
-            <div class="mt-4 flex items-center justify-end">
-                <PrimaryButton
-                    :class="{ 'opacity-25': form.processing }"
+            <form @submit.prevent="submit" class="space-y-4">
+                <!-- Input Email -->
+                <div>
+                    <input
+                        type="email"
+                        v-model="form.email"
+                        placeholder="Enter your Email"
+                        class="w-full px-4 py-2 rounded-md bg-gray-800 text-white focus:outline-none focus:ring-2 focus:ring-lime-400"
+                        required
+                        autofocus
+                    />
+                    <div v-if="form.errors.email" class="text-red-500 text-sm mt-1">
+                        {{ form.errors.email }}
+                    </div>
+                </div>
+
+                <!-- Tombol Submit -->
+                <button
+                    type="submit"
+                    class="w-full bg-lime-400 text-black font-semibold py-2 rounded-md hover:bg-lime-300"
                     :disabled="form.processing"
                 >
-                    Email Password Reset Link
-                </PrimaryButton>
-            </div>
-        </form>
-    </GuestLayout>
+                    Send Password Reset Link
+                </button>
+
+                <!-- Tombol Back to Login -->
+                <a
+                    :href="route('login')"
+                    class="w-full block text-center bg-gray-800 text-white font-semibold py-2 rounded-md hover:bg-gray-700"
+                >
+                    Back to Login
+                </a>
+            </form>
+        </div>
+    </div>
 </template>
+
+<style scoped>
+input::placeholder {
+    color: #9ca3af;
+}
+</style>
