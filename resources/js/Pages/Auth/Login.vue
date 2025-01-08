@@ -78,12 +78,7 @@ const submit = () => {
                 </button>
             </form>
 
-            <!-- Garis Pemisah -->
-            <div class="flex items-center my-4">
-                <hr class="flex-grow border-gray-700" />
-                <span class="mx-2 text-gray-400 text-sm">Or Continue with</span>
-                <hr class="flex-grow border-gray-700" />
-            </div>
+    
         </div>
     </div>
 </template>
