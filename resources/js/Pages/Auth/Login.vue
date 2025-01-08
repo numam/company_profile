@@ -24,7 +24,7 @@ const submit = () => {
 
         <!-- Card Login -->
         <div class="relative z-10 bg-primary p-8 rounded-lg shadow-lg w-full max-w-md">
-            <h2 class="text-3xl font-bold text-center text-lime-400">Login</h2>
+            <h2 class="text-3xl font-bold text-center text-secondary">Login</h2>
             <p class="text-sm text-center text-gray-400 mb-6">Welcome back! Please log in to access your account.</p>
 
             <form @submit.prevent="submit" class="space-y-4">
@@ -54,7 +54,7 @@ const submit = () => {
                 <div class="text-right">
                     <Link
                         :href="route('password.request')"
-                        class="text-sm text-lime-400 hover:underline"
+                        class="text-sm text-secondary hover:underline"
                     >
                         Forgot Password?
                     </Link>
