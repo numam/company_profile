@@ -11,6 +11,8 @@ Route::controller(CompanyProfileController::class)->group(function () {
     Route::get('/', 'index')->name('home');
     Route::get('/about', 'about')->name('about');
     Route::get('/layanan', [CompanyProfileController::class, 'layanan'])->name('layanan');
+    Route::get('/produk', [CompanyProfileController::class, 'produk'])->name('produk');
+    Route::get('/produk/{id}', [CompanyProfileController::class, 'produkDetail'])->name('produk.detail');
     Route::get('/portfolio', 'portfolio')->name('portfolio');
     Route::get('/contact', 'contact')->name('contact');
     Route::post('/contact', 'submitContact')->name('contact.submit');

@@ -43,25 +43,33 @@ class CompanyProfileController extends Controller
     public function layanan()
     {
         return Inertia::render('Layanan/Layanan', [
-            'layanan' => [
-                [
-                    'title' => 'Web Development',
-                    'description' => 'Custom web applications tailored to your needs',
-                    'icon' => 'code'
-                ],
-                [
-                    'title' => 'Mobile Development',
-                    'description' => 'Native and cross-platform mobile solutions',
-                    'icon' => 'mobile'
-                ],
-                [
-                    'title' => 'Cloud Solutions',
-                    'description' => 'Scalable cloud infrastructure and layanan',
-                    'icon' => 'cloud'
-                ]
-            ]
+
         ]);
     }
+
+    public function produk()
+    {
+        return Inertia::render('Produk/Produk', [
+
+        ]);
+    }
+
+    public function produkDetail($id)
+    {
+        // Contoh data produk berdasarkan ID (nanti bisa diganti dengan database query)
+        $produk = [
+            'id' => $id,
+            'title' => 'Produk ' . $id,
+            'description' => 'Deskripsi untuk produk ' . $id,
+            'price' => 'Rp ' . (100000 * $id),
+            'image' => 'path/to/image.jpg'
+        ];
+
+        return Inertia::render('Produk/ProdukDetail', [
+            'produk' => $produk
+        ]);
+    }
+
 
 
     public function contact()
