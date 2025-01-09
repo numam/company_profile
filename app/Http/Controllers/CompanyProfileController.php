@@ -71,6 +71,18 @@ class CompanyProfileController extends Controller
     }
 
 
+    public function tentang()
+    {
+        return Inertia::render('Tentang/TentangKami', [
+
+        ]);
+    }
+
+
+    public function artikel()
+    {
+        return Inertia::render('Artikel/Artikel');
+    }
 
     public function contact()
     {
@@ -94,24 +106,23 @@ class CompanyProfileController extends Controller
         return redirect()->back()->with('success', 'Thank you for your message. We will get back to you soon!');
     }
 
-    public function portfolio()
-    {
-        return Inertia::render('Portfolio', [
-            'projects' => [
-                [
-                    'title' => 'E-Commerce Platform',
-                    'description' => 'Built a full-featured online shopping platform',
-                    'image' => 'portfolio/ecommerce.jpg',
-                    'category' => 'Web Development'
-                ],
-                [
-                    'title' => 'Mobile Banking App',
-                    'description' => 'Developed secure mobile banking solution',
-                    'image' => 'portfolio/banking.jpg',
-                    'category' => 'Mobile Development'
-                ],
-                // Tambahkan project lainnya
-            ]
-        ]);
-    }
+    // public function portfolio()
+    // {
+    //     return Inertia::render('Portfolio', [
+    //         'projects' => [
+    //             [
+    //                 'title' => 'E-Commerce Platform',
+    //                 'description' => 'Built a full-featured online shopping platform',
+    //                 'image' => 'portfolio/ecommerce.jpg',
+    //                 'category' => 'Web Development'
+    //             ],
+    //             [
+    //                 'title' => 'Mobile Banking App',
+    //                 'description' => 'Developed secure mobile banking solution',
+    //                 'image' => 'portfolio/banking.jpg',
+    //                 'category' => 'Mobile Development'
+    //             ],
+    //         ]
+    //     ]);
+    // }
 }

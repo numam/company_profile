@@ -45,10 +45,10 @@ const isActiveMenu = computed(() => (path) => {
                 <Link :href="route('produk')" :class="isActiveMenu('produk')">
                     Produk
                 </Link>
-                <Link :href="route('home')" :class="isActiveMenu('berita')">
+                <Link :href="route('artikel')" :class="isActiveMenu('berita')">
                     Artikel
                 </Link>
-                <Link :href="route('home')" :class="isActiveMenu('artikel')">
+                <Link :href="route('tentang')" :class="isActiveMenu('artikel')">
                     Tentang Kami
                 </Link>
             </nav>
@@ -82,8 +82,8 @@ const isActiveMenu = computed(() => (path) => {
                 <Link class="w-full text-center py-2" :class="isActiveMenu('')" :href="route('home')">Beranda</Link>
                 <Link class="w-full text-center py-2" :class="isActiveMenu('kelas')" :href="route('layanan')">Layanan</Link>
                 <Link class="w-full text-center py-2" :class="isActiveMenu('portofolio')" :href="route('produk')">Produk</Link>
-                <Link class="w-full text-center py-2" :class="isActiveMenu('berita')" :href="route('home')">Artikel</Link>
-                <Link class="w-full text-center py-2" :class="isActiveMenu('artikel')" :href="route('home')">Tentang Kami</Link>
+                <Link class="w-full text-center py-2" :class="isActiveMenu('berita')" :href="route('artikel')">Artikel</Link>
+                <Link class="w-full text-center py-2" :class="isActiveMenu('artikel')" :href="route('tentang')">Tentang Kami</Link>
                 <button class="w-10/12 inline-flex text-white text-sm font-medium bg-primary border-0 py-2 px-5 focus:outline-none hover:bg-indigo-600 rounded-xl mt-2">
                     Login
                 </button>
