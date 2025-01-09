@@ -33,8 +33,8 @@ const isActiveMenu = computed(() => (path) => {
     <header class="bg-primary font-body w-full top-0 h-full">
         <!-- Desktop View -->
         <div class="container mx-auto hidden md:flex flex-wrap py-5 flex-col md:flex-row items-center">
-            <a class="flex title-font font-medium items-center mb-4 md:mb-0">
-                <img src="/assets/RakryanVET.png" alt="">
+            <a class="flex title-font font-medium items-center mb-4 md:mb-0 w-44 h-16">
+                <img src="/assets/logo.png" alt="">
             </a>
             <nav class="md:ml-auto md:mr-auto space-x-8 flex flex-wrap items-center justify-center text-base font-medium">
                 <Link :href="route('home')" :class="isActiveMenu('home')">
@@ -54,10 +54,8 @@ const isActiveMenu = computed(() => (path) => {
                 </Link>
             </nav>
 
-            <Link :href="route('login')" class="inline-flex text-white text-sm font-medium bg-primary border-0 py-2 px-5 focus:outline-none hover:bg-indigo-600 rounded-xl">
-                Login
-            </Link>
-            <Link :href="route('register')" class="inline-flex text-white text-sm font-medium bg-primary border-0 py-2 px-5 focus:outline-none hover:bg-indigo-600 rounded-xl">
+            <!-- <Link :x -->
+            <Link :href="route('register')" class="inline-flex text-white text-sm font-medium bg-secondary py-2 px-5 border-secondary rounded-xl border-2 hover:border-secondary hover:bg-primary ease-in-out transition duration-300">
                 Register
             </Link>
         </div>
