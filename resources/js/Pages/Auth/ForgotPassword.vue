@@ -26,7 +26,7 @@ const submit = () => {
 
         <!-- Card Forgot Password -->
         <div class="relative z-10 bg-primary p-8 rounded-lg shadow-lg w-full max-w-md">
-            <h2 class="text-3xl font-bold text-center text-lime-400">Forgot Password</h2>
+            <h2 class="text-3xl font-bold text-center text-secondary">Forgot Password</h2>
             <p class="text-sm text-center text-gray-400 mb-6">
                 Enter your email, and we'll send you a password reset link.
             </p>
@@ -43,7 +43,7 @@ const submit = () => {
                         type="email"
                         v-model="form.email"
                         placeholder="Enter your Email"
-                        class="w-full px-4 py-2 rounded-md bg-gray-800 text-white focus:outline-none focus:ring-2 focus:ring-lime-400"
+                        class="w-full px-4 py-2 rounded-md bg-gray-800 text-white focus:outline-none focus:ring-2 focus:ring-secondary"
                         required
                         autofocus
                     />
@@ -55,7 +55,7 @@ const submit = () => {
                 <!-- Tombol Submit -->
                 <button
                     type="submit"
-                    class="w-full bg-lime-400 text-black font-semibold py-2 rounded-md hover:bg-lime-300"
+                    class="w-full bg-secondary text-black font-semibold py-2 rounded-md hover:bg-secondary"
                     :disabled="form.processing"
                 >
                     Send Password Reset Link

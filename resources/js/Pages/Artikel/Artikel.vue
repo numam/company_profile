@@ -89,7 +89,7 @@ const experienceArticles = [
 <template>
   <Head title="Artikel" />
   <GuestLayout>
-    <div class="min-h-screen bg-black">
+    <div class="min-h-screen bg-primary">
       <div class="container mx-auto px-4 py-8">
         <!-- Search Bar -->
         <div class="mb-8">
@@ -117,12 +117,12 @@ const experienceArticles = [
                 >
               </div>
               <div class="p-6 flex flex-col justify-center">
-                <p class="text-amber-500 text-sm mb-2">{{ foodArticles[0].date }}</p>
+                <p class="text-amber-500 text-secondary text-sm mb-2">{{ foodArticles[0].date }}</p>
                 <h1 class="text-white text-3xl font-bold mb-4">{{ foodArticles[0].title }}</h1>
                 <p class="text-gray-400 mb-6">{{ foodArticles[0].excerpt }}</p>
                 <Link 
                   href="#" 
-                  class="text-amber-500 hover:text-amber-400 transition-colors inline-flex items-center"
+                  class="text-amber-500 hover:text-amber-400 text-secondary transition-colors inline-flex items-center"
                 >
                   Read more
                   <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -151,12 +151,12 @@ const experienceArticles = [
                 >
               </div>
               <div class="p-6">
-                <p class="text-amber-500 text-sm mb-2">{{ food.date }}</p>
+                <p class="text-amber-500 text-sm text-secondary mb-2">{{ food.date }}</p>
                 <h3 class="text-white text-xl font-bold mb-3">{{ food.title }}</h3>
-                <p class="text-gray-400 text-sm mb-4">{{ food.excerpt }}</p>
+                <p class="text-gray-400 text-sm  mb-4">{{ food.excerpt }}</p>
                 <Link 
                   href="#" 
-                  class="text-amber-500 hover:text-amber-400 transition-colors inline-flex items-center"
+                  class="text-amber-500 hover:text-amber-400 text-secondary transition-colors inline-flex items-center"
                 >
                   Read more
                   <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -185,12 +185,12 @@ const experienceArticles = [
                 >
               </div>
               <div class="p-6">
-                <p class="text-amber-500 text-sm mb-2">{{ person.date }}</p>
+                <p class="text-amber-500 text-sm text-secondary mb-2">{{ person.date }}</p>
                 <h3 class="text-white text-xl font-bold mb-3">{{ person.title }}</h3>
                 <p class="text-gray-400 text-sm mb-4">{{ person.excerpt }}</p>
                 <Link 
                   href="#" 
-                  class="text-amber-500 hover:text-amber-400 transition-colors inline-flex items-center"
+                  class="text-amber-500 hover:text-amber-400 text-secondary transition-colors inline-flex items-center"
                 >
                   Read more
                   <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -219,12 +219,12 @@ const experienceArticles = [
                 >
               </div>
               <div class="p-6">
-                <p class="text-amber-500 text-sm mb-2">{{ experience.date }}</p>
+                <p class="text-amber-500 text-sm text-secondary mb-2">{{ experience.date }}</p>
                 <h3 class="text-white text-xl font-bold mb-3">{{ experience.title }}</h3>
                 <p class="text-gray-400 text-sm mb-4">{{ experience.excerpt }}</p>
                 <Link 
                   href="#" 
-                  class="text-amber-500 hover:text-amber-400 transition-colors inline-flex items-center"
+                  class="text-amber-500 hover:text-amber-400 text-secondary transition-colors inline-flex items-center"
                 >
                   Read more
                   <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">

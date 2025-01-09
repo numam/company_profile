@@ -25,7 +25,7 @@ const submit = () => {
 
         <!-- Card Register -->
         <div class="relative z-10 bg-primary p-8 rounded-lg shadow-lg w-full max-w-md">
-            <h2 class="text-3xl font-bold text-center text-lime-400">Register</h2>
+            <h2 class="text-3xl font-bold text-center text-secondary">Register</h2>
             <p class="text-sm text-center text-gray-400 mb-6">Create your account to get started!</p>
 
             <form @submit.prevent="submit" class="space-y-4">
@@ -35,7 +35,7 @@ const submit = () => {
                         type="text"
                         v-model="form.name"
                         placeholder="Enter your Name"
-                        class="w-full px-4 py-2 rounded-md bg-gray-800 text-white focus:outline-none focus:ring-2 focus:ring-lime-400"
+                        class="w-full px-4 py-2 rounded-md bg-gray-800 text-white focus:outline-none focus:ring-2 focus:ring-secondary"
                         required
                     />
                     <p v-if="form.errors.name" class="text-red-400 text-sm mt-1">{{ form.errors.name }}</p>
@@ -47,7 +47,7 @@ const submit = () => {
                         type="email"
                         v-model="form.email"
                         placeholder="Enter your Email"
-                        class="w-full px-4 py-2 rounded-md bg-gray-800 text-white focus:outline-none focus:ring-2 focus:ring-lime-400"
+                        class="w-full px-4 py-2 rounded-md bg-gray-800 text-white focus:outline-none focus:ring-2 focus:ring-secondary"
                         required
                     />
                     <p v-if="form.errors.email" class="text-red-400 text-sm mt-1">{{ form.errors.email }}</p>
@@ -59,7 +59,7 @@ const submit = () => {
                         type="password"
                         v-model="form.password"
                         placeholder="Enter your Password"
-                        class="w-full px-4 py-2 rounded-md bg-gray-800 text-white focus:outline-none focus:ring-2 focus:ring-lime-400"
+                        class="w-full px-4 py-2 rounded-md bg-gray-800 text-white focus:outline-none focus:ring-2 focus:ring-secondary"
                         required
                     />
                     <p v-if="form.errors.password" class="text-red-400 text-sm mt-1">{{ form.errors.password }}</p>
@@ -71,7 +71,7 @@ const submit = () => {
                         type="password"
                         v-model="form.password_confirmation"
                         placeholder="Confirm your Password"
-                        class="w-full px-4 py-2 rounded-md bg-gray-800 text-white focus:outline-none focus:ring-2 focus:ring-lime-400"
+                        class="w-full px-4 py-2 rounded-md bg-gray-800 text-white focus:outline-none focus:ring-2 focus:ring--secondary"
                         required
                     />
                     <p v-if="form.errors.password_confirmation" class="text-red-400 text-sm mt-1">
@@ -82,7 +82,7 @@ const submit = () => {
                 <!-- Tombol Register -->
                 <button
                     type="submit"
-                    class="w-full bg-lime-400 text-black font-semibold py-2 rounded-md hover:bg-lime-300"
+                    class="w-full bg-secondary text-black font-semibold py-2 rounded-md hover:bg-secondary"
                     :disabled="form.processing"
                 >
                     Register
@@ -94,7 +94,7 @@ const submit = () => {
                         Already have an account?
                         <Link
                             :href="route('login')"
-                            class="text-lime-400 hover:underline"
+                            class="text-secondary hover:underline"
                         >
                             Login here
                         </Link>

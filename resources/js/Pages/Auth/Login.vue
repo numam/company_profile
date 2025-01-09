@@ -34,7 +34,7 @@ const submit = () => {
                         type="email"
                         v-model="form.email"
                         placeholder="Enter your Email"
-                        class="w-full px-4 py-2 rounded-md bg-gray-800 text-white focus:outline-none focus:ring-2 focus:ring-lime-400"
+                        class="w-full px-4 py-2 rounded-md bg-gray-800 text-white focus:outline-none focus:ring-2 focus:ring-secondary"
                         required
                     />
                 </div>
@@ -45,7 +45,7 @@ const submit = () => {
                         type="password"
                         v-model="form.password"
                         placeholder="Enter your Password"
-                        class="w-full px-4 py-2 rounded-md bg-gray-800 text-white focus:outline-none focus:ring-2 focus:ring-lime-400"
+                        class="w-full px-4 py-2 rounded-md bg-gray-800 text-white focus:outline-none focus:ring-2 focus:ring-secondary"
                         required
                     />
                 </div>
