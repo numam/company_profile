@@ -12,31 +12,32 @@ const toggleMenu = () => {
 const currentRoute = computed(() => usePage().url)
 
 const isActiveMenu = computed(() => (path) => {
-    const url = currentRoute.value
-    if (path === '') {
-        return url === '/' ? "text-white" : "text-gray-900 hover:text-gray-700"
+    const currentUrl = usePage().url;
+
+    if (path === 'home') {
+        return currentUrl === '/' ? "text-secondary" : "text-white hover:text-secondary";
     }
 
-    // Split the URL into segments
-    const segments = url.split('/').filter(Boolean)
+    return currentUrl.includes(path)
+        ? "text-secondary"
+        : "text-white hover:text-secondary";
+});
 
-    // Check if the first segment matches the path
-    return segments[0] === path
-        ? "text-primary"
-        : "text-gray-900 hover:text-gray-700"
-})
+
+
+
 
 </script>
 
 <template>
-    <header class="text-gray-600 font-body w-full top-0 h-full">
+    <header class="bg-primary font-body w-full top-0 h-full">
         <!-- Desktop View -->
         <div class="container mx-auto hidden md:flex flex-wrap py-5 flex-col md:flex-row items-center">
-            <a class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
+            <a class="flex title-font font-medium items-center mb-4 md:mb-0">
                 <img src="/assets/RakryanVET.png" alt="">
             </a>
             <nav class="md:ml-auto md:mr-auto space-x-8 flex flex-wrap items-center justify-center text-base font-medium">
-                <Link :href="route('home')" :class="isActiveMenu('index')">
+                <Link :href="route('home')" :class="isActiveMenu('home')">
                     Beranda
                 </Link>
                 <Link :href="route('layanan')" :class="isActiveMenu('layanan')">
@@ -45,13 +46,14 @@ const isActiveMenu = computed(() => (path) => {
                 <Link :href="route('produk')" :class="isActiveMenu('produk')">
                     Produk
                 </Link>
-                <Link :href="route('artikel')" :class="isActiveMenu('berita')">
+                <Link :href="route('artikel')" :class="isActiveMenu('artikel')">
                     Artikel
                 </Link>
-                <Link :href="route('tentang')" :class="isActiveMenu('artikel')">
+                <Link :href="route('tentang')" :class="isActiveMenu('tentang')">
                     Tentang Kami
                 </Link>
             </nav>
+
             <Link :href="route('login')" class="inline-flex text-white text-sm font-medium bg-primary border-0 py-2 px-5 focus:outline-none hover:bg-indigo-600 rounded-xl">
                 Login
             </Link>
@@ -79,11 +81,11 @@ const isActiveMenu = computed(() => (path) => {
 
             <!-- Mobile Menu Links -->
             <nav v-show="isMenuOpen" class="flex flex-col items-center space-y-4 pb-5 text-base font-medium">
-                <Link class="w-full text-center py-2" :class="isActiveMenu('')" :href="route('home')">Beranda</Link>
-                <Link class="w-full text-center py-2" :class="isActiveMenu('kelas')" :href="route('layanan')">Layanan</Link>
-                <Link class="w-full text-center py-2" :class="isActiveMenu('portofolio')" :href="route('produk')">Produk</Link>
-                <Link class="w-full text-center py-2" :class="isActiveMenu('berita')" :href="route('artikel')">Artikel</Link>
-                <Link class="w-full text-center py-2" :class="isActiveMenu('artikel')" :href="route('tentang')">Tentang Kami</Link>
+                <Link class="w-full text-center py-2" :class="isActiveMenu('home')" :href="route('home')">Beranda</Link>
+                <Link class="w-full text-center py-2" :class="isActiveMenu('layanan')" :href="route('layanan')">Layanan</Link>
+                <Link class="w-full text-center py-2" :class="isActiveMenu('produk')" :href="route('produk')">Produk</Link>
+                <Link class="w-full text-center py-2" :class="isActiveMenu('artikel')" :href="route('artikel')">Artikel</Link>
+                <Link class="w-full text-center py-2" :class="isActiveMenu('tentang')" :href="route('tentang')">Tentang Kami</Link>
                 <button class="w-10/12 inline-flex text-white text-sm font-medium bg-primary border-0 py-2 px-5 focus:outline-none hover:bg-indigo-600 rounded-xl mt-2">
                     Login
                 </button>
