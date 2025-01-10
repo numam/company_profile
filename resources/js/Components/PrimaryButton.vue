@@ -1,7 +1,47 @@
+<script setup>
+    import { Link } from '@inertiajs/vue3'
+    import { computed } from 'vue'
+
+    const props = defineProps({
+        type: {
+            type: String,
+            default: "button",
+        },
+        value: {
+            type: String,
+            default: null,
+        },
+        href: {
+            type: String,
+            default: null,
+        }
+    })
+
+    const isLink = computed(() => !!props.href)
+
+    const buttonClass = "flex items-center justify-center px-3 h-11 text-sm font-medium text-white transition duration-300 ease-in-out border border-transparent rounded-xl shadow-sm outline-none bg-secondary hover:bg-primary hover:border-secondary hover:text-secondary"
+</script>
+
 <template>
-    <button
-        class="inline-flex items-center rounded-md border border-transparent bg-gray-800 px-4 py-2 text-xs font-semibold uppercase tracking-widest text-white transition duration-150 ease-in-out hover:bg-gray-700 focus:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 active:bg-gray-900"
+    <Link
+        v-if="isLink"
+        :href="href"
+        :class="buttonClass"
     >
-        <slot />
+        <template v-if="value">{{ value }}</template>
+        <template v-else>
+            <slot />
+        </template>
+    </Link>
+
+    <button
+        v-else
+        :type="type"
+        :class="buttonClass"
+    >
+        <template v-if="value">{{ value }}</template>
+        <template v-else>
+            <slot />
+        </template>
     </button>
 </template>

@@ -13,7 +13,7 @@ export default {
     theme: {
         extend: {
             fontFamily: {
-                'body' : ['Poppins']
+                'body' : ['Sanchez']
             },
             colors: {
                 'primary': "#1A1A1A",
