@@ -54,14 +54,14 @@ class CompanyProfileController extends Controller
         ]);
     }
 
-    public function produkDetail($id)
+    public function produkDetail($slug)
     {
-        // Contoh data produk berdasarkan ID (nanti bisa diganti dengan database query)
+        // Contoh data produk berdasarkan slug
         $produk = [
-            'id' => $id,
-            'title' => 'Produk ' . $id,
-            'description' => 'Deskripsi untuk produk ' . $id,
-            'price' => 'Rp ' . (100000 * $id),
+            'slug' => $slug,
+            'title' => 'Produk ' . ucfirst($slug),
+            'description' => 'Deskripsi untuk produk ' . ucfirst($slug),
+            'price' => 'Rp ' . (100000 * rand(1, 10)),
             'image' => 'path/to/image.jpg'
         ];
 
@@ -69,6 +69,7 @@ class CompanyProfileController extends Controller
             'produk' => $produk
         ]);
     }
+
 
 
     public function tentang()

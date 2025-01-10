@@ -32,9 +32,9 @@ const isActiveMenu = computed(() => (path) => {
 <template>
     <header class="bg-primary font-body w-full top-0 h-full">
         <!-- Desktop View -->
-        <div class="container mx-auto hidden md:flex flex-wrap py-5 flex-col md:flex-row items-center">
-            <a class="flex title-font font-medium items-center mb-4 md:mb-0">
-                <img src="/assets/RakryanVET.png" alt="">
+        <div class="container mx-auto hidden lg:flex flex-wrap py-5 flex-col md:flex-row items-center">
+            <a class="flex title-font font-medium items-center mb-4 md:mb-0 w-44 h-16 overflow-hidden">
+                <img src="/assets/logo.png" alt="">
             </a>
             <nav class="md:ml-auto md:mr-auto space-x-8 flex flex-wrap items-center justify-center text-base font-medium">
                 <Link :href="route('home')" :class="isActiveMenu('home')">
@@ -54,26 +54,23 @@ const isActiveMenu = computed(() => (path) => {
                 </Link>
             </nav>
 
-            <Link :href="route('login')" class="inline-flex text-white text-sm font-medium bg-primary border-0 py-2 px-5 focus:outline-none hover:bg-indigo-600 rounded-xl">
+            <Link :href="route('login')" class="inline-flex text-white text-sm font-medium bg-secondary py-2 px-5 border-secondary rounded-xl border-2 hover:border-secondary hover:bg-primary ease-in-out transition duration-300">
                 Login
-            </Link>
-            <Link :href="route('register')" class="inline-flex text-white text-sm font-medium bg-primary border-0 py-2 px-5 focus:outline-none hover:bg-indigo-600 rounded-xl">
-                Register
             </Link>
         </div>
 
         <!-- Mobile View -->
-        <div class="md:hidden w-full">
-            <div class="flex justify-between w-full py-4 px-5">
-                <a class="flex title-font font-medium items-center text-gray-900">
-                    <img class="w-20" src="https://rakryan.id/images/RakryanVET.png" alt="Rakryan VET Logo">
+        <div class="lg:hidden w-full">
+            <div class="flex justify-between w-full py-4">
+                <a class="flex title-font font-medium items-center text-gray-900 h-10">
+                    <img class="w-24" src="/assets/logo.png" alt="Rakryan VET Logo">
                 </a>
 
                 <button @click="toggleMenu" class="flex items-center text-gray-900 focus:outline-none">
-                    <svg v-if="!isMenuOpen" class="w-8 h-8 text-primary" fill="none" stroke-width="1.5" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <svg v-if="!isMenuOpen" class="w-8 h-8 text-white" fill="none" stroke-width="1.5" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"></path>
                     </svg>
-                    <svg v-else class="w-8 h-8 text-primary" data-slot="icon" fill="none" stroke-width="1.5" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <svg v-else class="w-8 h-8 text-white" data-slot="icon" fill="none" stroke-width="1.5" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12"></path>
                     </svg>
                 </button>
@@ -86,9 +83,11 @@ const isActiveMenu = computed(() => (path) => {
                 <Link class="w-full text-center py-2" :class="isActiveMenu('produk')" :href="route('produk')">Produk</Link>
                 <Link class="w-full text-center py-2" :class="isActiveMenu('artikel')" :href="route('artikel')">Artikel</Link>
                 <Link class="w-full text-center py-2" :class="isActiveMenu('tentang')" :href="route('tentang')">Tentang Kami</Link>
-                <button class="w-10/12 inline-flex text-white text-sm font-medium bg-primary border-0 py-2 px-5 focus:outline-none hover:bg-indigo-600 rounded-xl mt-2">
-                    Login
-                </button>
+                <Link :href="route('login')" class="w-full items-center text-center inline-flex text-white text-sm font-medium bg-secondary border-0 py-2 px-5 focus:outline-none  rounded-xl mt-2">
+                    <p class="text-center w-full text-base">
+                        Login
+                    </p>
+                </Link>
             </nav>
         </div>
     </header>

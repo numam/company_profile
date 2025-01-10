@@ -24,7 +24,7 @@ onBeforeUnmount(() => {
 
 <template>
   <div class="flex flex-col sm:justify-center items-center bg-primary font-body">
-    <div class="flex overflow-auto w-full lg:px-20 px-5 h-full">
+    <div class="flex overflow-hidden w-full lg:px-20 px-5 h-full">
       <div class="flex w-full">
         <Topbar :logo="logo"></Topbar>
       </div>
