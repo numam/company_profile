@@ -29,27 +29,28 @@ import GuestLayout from '@/Layouts/GuestLayout.vue';
       </div>
     </section>
 
-    <!-- Why Us Section -->
+  <!-- Why Us Section -->
 <section class="relative py-16 bg-cover w-full bg-center" style="background-image: url('https://mir-s3-cdn-cf.behance.net/project_modules/source/63c36c78306267.5ca7cc9650755.jpg');">
   <div class="absolute inset-0 bg-primary opacity-70"></div>
   <div class="relative max-w-7xl mx-auto px-6 lg:px-8 text-gray-100">
     <h2 class="text-4xl font-bold mb-14 text-center text-white"> Why Us? </h2>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-7">
       <div class="text-center">
         <h3 class="text-2xl font-bold mb-2">Individual Approach</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        <p>Kami memahami bahwa setiap pelanggan memiliki kebutuhan yang unik, sehingga kami memberikan solusi personal untuk memastikan pengalaman terbaik dalam memilih produk daging premium sesuai selera.</p>
       </div>
       <div class="text-center">
         <h3 class="text-2xl font-bold mb-2">Quality of Work</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        <p>Kualitas adalah prioritas utama kami. Setiap potongan daging dipilih secara cermat dan diproses dengan standar higienis tertinggi untuk menjaga kesegaran dan rasa terbaik.</p>
       </div>
       <div class="text-center">
         <h3 class="text-2xl font-bold mb-2">Autonomy</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        <p>Kami memberikan kebebasan kepada pelanggan untuk memilih opsi pemotongan dan penyajian sesuai kebutuhan, memastikan setiap pesanan disesuaikan dengan preferensi pribadi Anda.</p>
       </div>
     </div>
   </div>
 </section>
+
 
     <!-- Informasi Cepat -->
     <section class="bg- text-gray-100 py-20 w-full" style="background-image: url('https://img.freepik.com/free-photo/pieces-raw-fresh-meat-isolated-black-stone-board-mirrored-side-view_346278-817.jpg?t=st=1736518578~exp=1736522178~hmac=b2f5dd05e096f08c0e670857d4e8d71e7d7ca2fb2e24aec0c57c730e2adeffa3&w=996');">
