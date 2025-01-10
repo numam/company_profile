@@ -83,7 +83,7 @@ class CompanyProfileController extends Controller
     {
         return Inertia::render('Artikel/Artikel');
     }
-
+    
     public function contact()
     {
         return Inertia::render('Contact');

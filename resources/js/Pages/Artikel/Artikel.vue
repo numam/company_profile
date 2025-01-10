@@ -90,7 +90,7 @@ const experienceArticles = [
   <Head title="Artikel" />
   <GuestLayout>
     <div class="min-h-screen bg-primary">
-      <div class="container mx-auto px-4 py-8">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <!-- Search Bar -->
         <div class="mb-8">
           <div class="relative max-w-xl mx-auto">
@@ -107,7 +107,7 @@ const experienceArticles = [
 
         <!-- Featured Article -->
         <div class="mb-12">
-          <div class="bg-gray-900 rounded-xl overflow-hidden">
+          <div class="bg-primary rounded-xl overflow-hidden">
             <div class="grid md:grid-cols-2 gap-6">
               <div class="relative h-[400px]">
                 <img 
