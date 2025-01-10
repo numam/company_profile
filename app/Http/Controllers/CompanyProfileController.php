@@ -85,6 +85,21 @@ class CompanyProfileController extends Controller
         return Inertia::render('Artikel/Artikel');
     }
 
+    public function artikelDetail($slug)
+    {
+        // Contoh data produk berdasarkan slug
+        $artikel = [
+            'slug' => $slug,
+            'title' => 'Artikel ' . ucfirst($slug),
+            'description' => 'Deskripsi untuk produk ' . ucfirst($slug),
+            'image' => 'path/to/image.jpg'
+        ];
+
+        return Inertia::render('Artikel/ArtikelDetail', [
+            'produk' => $artikel
+        ]);
+    }
+
     public function contact()
     {
         return Inertia::render('Contact');
