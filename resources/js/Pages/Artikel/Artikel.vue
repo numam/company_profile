@@ -38,6 +38,7 @@ const foodArticles = [
 const peopleArticles = [
   {
     id: 1,
+    slug: "kapan-waktu",
     image: "https://i.pinimg.com/736x/b0/52/ff/b052ffb7a791361a4b055292ab7f0682.jpg",
     date: "December 25, 2024",
     title: "Kapan Waktu Terbaik Membeli Daging Segar?",
@@ -45,6 +46,7 @@ const peopleArticles = [
   },
   {
     id: 2,
+    slug: "rahasia-chef",
     image: "https://i.pinimg.com/736x/79/c3/4f/79c34f388ca5624ac721562d52b8eb78.jpg?height=300&width=400",
     date: "January 5, 2025",
     title: "Rahasia Chef Profesional dalam Memilih Bahan Makanan",
@@ -52,6 +54,7 @@ const peopleArticles = [
   },
   {
     id: 3,
+    slug: "inspirasi-dari",
     image: "https://i.pinimg.com/736x/67/b0/fe/67b0fe85700a97131292bb862230cd01.jpg?height=300&width=400",
     date: "February 10, 2025",
     title: "Inspirasi dari Pasar Tradisional hingga Restoran Mewah",
@@ -94,9 +97,9 @@ const experienceArticles = [
         <!-- Search Bar -->
         <div class="mb-8">
           <div class="relative max-w-xl mx-auto">
-            <input 
-              type="text" 
-              placeholder="Search articles..." 
+            <input
+              type="text"
+              placeholder="Search articles..."
               class="w-full bg-gray-900 border border-gray-800 rounded-lg px-4 py-2 text-white focus:outline-none focus:border-amber-500"
             >
             <button class="absolute right-3 top-1/2 transform -translate-y-1/2">
@@ -110,7 +113,7 @@ const experienceArticles = [
           <div class="bg-primary rounded-xl overflow-hidden">
             <div class="grid md:grid-cols-2 gap-6">
               <div class="relative h-[400px]">
-                <img 
+                <img
                   :src="foodArticles[0].image"
                   :alt="foodArticles[0].title"
                   class="absolute inset-0 w-full h-full object-cover"
@@ -120,8 +123,8 @@ const experienceArticles = [
                 <p class="text-amber-500 text-secondary text-sm mb-2">{{ foodArticles[0].date }}</p>
                 <h1 class="text-white text-3xl font-bold mb-4">{{ foodArticles[0].title }}</h1>
                 <p class="text-gray-400 mb-6">{{ foodArticles[0].excerpt }}</p>
-                <Link 
-                  href="#" 
+                <Link
+                  href="#"
                   class="text-amber-500 hover:text-amber-400 text-secondary transition-colors inline-flex items-center"
                 >
                   Read more
@@ -138,14 +141,14 @@ const experienceArticles = [
         <section class="mb-12">
           <h2 class="text-3xl font-bold mb-6 text-white">Food</h2>
           <div class="grid md:grid-cols-3 gap-6">
-            <div 
-              v-for="food in foodArticles.slice(1)" 
+            <div
+              v-for="food in foodArticles.slice(1)"
               :key="food.id"
               class="bg-gray-900 rounded-xl overflow-hidden hover:transform hover:scale-105 transition-transform duration-300"
             >
               <div class="relative h-48">
-                <img 
-                  :src="food.image" 
+                <img
+                  :src="food.image"
                   :alt="food.title"
                   class="absolute inset-0 w-full h-full object-cover"
                 >
@@ -154,8 +157,8 @@ const experienceArticles = [
                 <p class="text-amber-500 text-sm text-secondary mb-2">{{ food.date }}</p>
                 <h3 class="text-white text-xl font-bold mb-3">{{ food.title }}</h3>
                 <p class="text-gray-400 text-sm  mb-4">{{ food.excerpt }}</p>
-                <Link 
-                  href="#" 
+                <Link
+                  href="#"
                   class="text-amber-500 hover:text-amber-400 text-secondary transition-colors inline-flex items-center"
                 >
                   Read more
@@ -172,14 +175,14 @@ const experienceArticles = [
         <section class="mb-12">
           <h2 class="text-3xl font-bold mb-6 text-white">People</h2>
           <div class="grid md:grid-cols-3 gap-6">
-            <div 
-              v-for="person in peopleArticles" 
+            <div
+              v-for="person in peopleArticles"
               :key="person.id"
               class="bg-gray-900 rounded-xl overflow-hidden hover:transform hover:scale-105 transition-transform duration-300"
             >
               <div class="relative h-48">
-                <img 
-                  :src="person.image" 
+                <img
+                  :src="person.image"
                   :alt="person.title"
                   class="absolute inset-0 w-full h-full object-cover"
                 >
@@ -188,9 +191,8 @@ const experienceArticles = [
                 <p class="text-amber-500 text-sm text-secondary mb-2">{{ person.date }}</p>
                 <h3 class="text-white text-xl font-bold mb-3">{{ person.title }}</h3>
                 <p class="text-gray-400 text-sm mb-4">{{ person.excerpt }}</p>
-                <Link 
-                  href="#" 
-                  class="text-amber-500 hover:text-amber-400 text-secondary transition-colors inline-flex items-center"
+                <Link :href="'/artikel/' + person.slug"
+                  class="hover:text-amber-400 text-secondary transition-colors inline-flex items-center"
                 >
                   Read more
                   <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -206,14 +208,14 @@ const experienceArticles = [
         <section>
           <h2 class="text-3xl font-bold mb-6 text-white">Experience</h2>
           <div class="grid md:grid-cols-3 gap-6">
-            <div 
-              v-for="experience in experienceArticles" 
+            <div
+              v-for="experience in experienceArticles"
               :key="experience.id"
               class="bg-gray-900 rounded-xl overflow-hidden hover:transform hover:scale-105 transition-transform duration-300"
             >
               <div class="relative h-48">
-                <img 
-                  :src="experience.image" 
+                <img
+                  :src="experience.image"
                   :alt="experience.title"
                   class="absolute inset-0 w-full h-full object-cover"
                 >
@@ -222,8 +224,8 @@ const experienceArticles = [
                 <p class="text-amber-500 text-sm text-secondary mb-2">{{ experience.date }}</p>
                 <h3 class="text-white text-xl font-bold mb-3">{{ experience.title }}</h3>
                 <p class="text-gray-400 text-sm mb-4">{{ experience.excerpt }}</p>
-                <Link 
-                  href="#" 
+                <Link
+                  href="#"
                   class="text-amber-500 hover:text-amber-400 text-secondary transition-colors inline-flex items-center"
                 >
                   Read more
