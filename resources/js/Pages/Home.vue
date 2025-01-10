@@ -1,6 +1,7 @@
 <script setup>
 import { Head, Link } from '@inertiajs/vue3';
 import GuestLayout from '@/Layouts/GuestLayout.vue';
+import PrimaryButton from '@/Components/PrimaryButton.vue';
 
 defineProps({
     heroContent: Object,
@@ -12,37 +13,38 @@ defineProps({
     <Head title="Beranda" />
 
     <GuestLayout />
-    <div class="min-h-screen bg-white">
+    <div class="min-h-screen bg-primary">
 
 
         <!-- Hero Section -->
-        <div class="relative bg-white overflow-hidden">
-            <div class="max-w-7xl mx-auto">
-                <div class="relative z-10 pb-8 bg-white sm:pb-16 md:pb-20 lg:max-w-2xl lg:w-full lg:pb-28 xl:pb-32">
-                    <main class="mt-10 mx-auto max-w-7xl px-4 sm:mt-12 sm:px-6 md:mt-16 lg:mt-20 lg:px-8 xl:mt-28">
-                        <div class="sm:text-center lg:text-left">
-                            <h1 class="text-4xl tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-6xl">
-                                <span class="block">{{ heroContent.heading }}</span>
-                            </h1>
-                            <p class="mt-3 text-base text-gray-500 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0">
-                                {{ heroContent.description }}
-                            </p>
-                            <div class="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
-                                <div class="rounded-md shadow">
-                                    <Link :href="route('contact')"
-                                        class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 md:py-4 md:text-lg md:px-10">
-                                        Contact Us
-                                    </Link>
-                                </div>
-                            </div>
-                        </div>
-                    </main>
+        <section class="text-gray-900 body-font mx-5 sm:mx-8 md:mx-12 lg:mx-20 py-10">
+            <div class="container mx-auto flex flex-col md:flex-row items-center">
+                <div class="w-full md:w-3/5 md:order-2 mb-8 md:mb-0 ml-10">
+                    <img class="object-cover object-center rounded w-full h-64 sm:h-80 md:h-96 lg:h-[480px]"
+                        src="https://www.nusr-et.com.tr/Elements/Images/about.jpg"
+                        alt="Rakryan Vocational Education and Training">
+                </div>
+                <div class="w-full md:w-2/5 md:order-1 flex flex-col items-center md:items-start text-center md:text-left">
+                    <h1 class="title-font text-2xl sm:text-6xl mb-6 font-medium text-secondary">
+                        D'MeatBoy
+                    </h1>
+                    <p class="mb-8 leading-relaxed text-sm sm:text-lg font-normal text-white">
+                        Kami menghadirkan daging premium segar, berkualitas tinggi, langsung dari sumber terbaik untuk memenuhi kebutuhan Anda.
+                    </p>
+                    <div class="flex justify-center md:justify-start">
+                        <PrimaryButton class="w-full">
+                            Pesan Sekarang
+                            <svg class="w-4 h-4 sm:w-5 sm:h-5 ml-2" data-slot="icon" fill="none" stroke-width="1.5" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3"></path>
+                            </svg>
+                        </PrimaryButton>
+                    </div>
                 </div>
             </div>
-        </div>
+        </section>
 
         <!-- Stats Section -->
-        <div class="bg-gray-50 pt-12 sm:pt-16">
+        <div class="">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="max-w-4xl mx-auto text-center">
                     <h2 class="text-3xl font-extrabold text-gray-900 sm:text-4xl">
