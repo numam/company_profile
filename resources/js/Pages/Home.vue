@@ -111,7 +111,7 @@ defineProps({
                 </div>
                 <div class="mx-auto mt-10 ">
                     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                        <div class="bg-[#414141] shadow transform transition duration-500 rounded-2xl">
+                        <div class="bg-third shadow transform transition duration-500 rounded-2xl">
                             <Link :href="route('produk')">
                                 <img
                                     src="https://i.pinimg.com/736x/1b/a3/18/1ba318530d807a244b5cbdf0740179a7.jpg"
@@ -130,7 +130,7 @@ defineProps({
                                 </div>
                             </Link>
                         </div>
-                        <div class="bg-[#414141] shadow transform transition duration-500 rounded-2xl">
+                        <div class="bg-third shadow transform transition duration-500 rounded-2xl">
                             <Link :href="route('produk')">
                                 <img
                                     src="https://i.pinimg.com/736x/1b/a3/18/1ba318530d807a244b5cbdf0740179a7.jpg"
@@ -149,7 +149,7 @@ defineProps({
                                 </div>
                             </Link>
                         </div>
-                        <div class="bg-[#414141] shadow transform transition duration-500 rounded-2xl">
+                        <div class="bg-third shadow transform transition duration-500 rounded-2xl">
                             <Link :href="route('produk')">
                                 <img
                                     src="https://i.pinimg.com/736x/1b/a3/18/1ba318530d807a244b5cbdf0740179a7.jpg"
