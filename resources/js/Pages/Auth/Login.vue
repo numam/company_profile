@@ -15,12 +15,23 @@ const submit = () => {
 </script>
 
 <template>
-    <Head title="Login" />
+    <Head title="Login"/>
 
     <div class="min-h-screen flex items-center justify-center bg-cover bg-center relative"
         style="background-image: url('/assets/login.png');">
         <!-- Overlay untuk efek gelap -->
         <div class="absolute inset-0 bg-black/30"></div>
+
+        <!-- Tombol Back -->
+        <Link
+            :href="route('home')" 
+            class="absolute top-4 left-4 bg-primary text-secondary p-2 rounded-full hover:bg-gray-700"
+        >
+            <!-- Ikon Panah -->
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+            </svg>
+        </Link>
 
         <!-- Card Login -->
         <div class="relative z-10 bg-primary p-8 rounded-lg shadow-lg w-full max-w-md">
@@ -49,8 +60,6 @@ const submit = () => {
                         required
                     />
                 </div>
-
-            
 
                 <!-- Tombol Login -->
                 <button
