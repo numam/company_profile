@@ -1,34 +1,54 @@
 <template>
   <Head title="Produk Kami" />
   <GuestLayout />
-  <section class="flex flex-col lg:flex-row items-center min-h-screen bg-primary p-10 w-full mx-auto animate-fade-in">
-    <!-- Product Image and Description -->
-    <div class="w-full lg:w-1/2 flex flex-col justify-center lg:h-full">
+  <section class="flex flex-col lg:flex-row items-center lg:items-start min-h-screen bg-primary md:pt-24 md:px-20 pt-16 px-10 w-full animate-fade-in space-y-10 lg:space-y-0 lg:space-x-10">
+    <!-- Product Image -->
+    <div class="w-full lg:w-1/2 flex-shrink-0">
       <img
         src="https://images.squarespace-cdn.com/content/v1/54b852a3e4b0b0eaa0ff938e/1424136172939-11EO3F7E1Z9U71CG6UV5/Bison+Tenderlion.jpg"
         :alt="produk.image"
-        class="rounded-lg shadow-lg object-cover w-full max-w-full h-full hover:scale-105 transition-transform duration-500 mb-6"
+        class="rounded-lg shadow-lg object-cover w-full max-w-full h-auto hover:scale-105 transition-transform duration-500"
       />
-
-      <!-- Product Description -->
-      <section class="bg-gray-800 text-white p-6">
-        <h2 class="text-lg font-bold text-white mb-2">Deskripsi Produk</h2>
-        <p class="text-gray-300 text-sm leading-relaxed">
+      <!-- Description Section -->
+      <div class="mt-4 w-full bg-primary border border-secondary rounded-lg px-4 py-2 text-white focus:outline-none focus:border-amber-500">
+        <h2 class="text-lg font-semibold text-white">Deskripsi Produk</h2>
+        <p class="text-gray-300 text-sm mt-2">
           Daging Wagyu adalah jenis daging sapi premium yang terkenal karena kualitasnya yang sangat tinggi, terutama dalam hal kelembutan dan marbling (lemak intramuskular). Wagyu berasal dari Jepang dan merupakan hasil dari pemeliharaan sapi dengan perhatian khusus terhadap diet dan teknik pemeliharaan yang unik. Marbling pada daging Wagyu memberikan rasa yang kaya dan tekstur yang sangat lembut, membuatnya sangat dihargai di dunia kuliner.
         </p>
-      </section>
+      </div>
     </div>
 
     <!-- Product Details -->
-    <div class="w-full lg:w-1/2 mt-10 lg:mt-0 lg:ml-16 text-white">
-      <h1 class="text-3xl font-bold mb-4">{{ produk.title }}</h1>
-      <p class="text-2xl font-semibold text-secondary mb-6">{{ produk.price }}</p>
+    <div class="w-full lg:w-1/2 flex flex-col space-y-6">
+      <!-- Product Title and Price -->
+      <div>
+        <h1 class="text-3xl font-bold text-white mb-2">{{ produk.title }}</h1>
+        <p class="text-2xl font-semibold text-secondary">{{ produk.price }}</p>
+      </div>
+
+      <!-- Rating -->
+      <div class="flex items-center mb-6">
+        <span class="text-yellow-400 flex">
+          <svg
+            v-for="index in 5"
+            :key="index"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="currentColor"
+            viewBox="0 0 24 24"
+            :class="{'text-yellow-400': index <= produk.rating, 'text-gray-400': index > produk.rating}"
+            class="w-6 h-6"
+          >
+            <path
+              d="M12 2.25l3.09 6.26 6.91 1.01-5 4.87 1.18 6.88L12 17.77l-6.18 3.25 1.18-6.88-5-4.87 6.91-1.01L12 2.25z"
+            />
+          </svg>
+        </span>
+        <span class="text-sm text-gray-300 ml-2">({{ produk.rating }}/5)</span>
+      </div>
 
       <!-- Quantity Selector -->
-      <div class="mb-6">
-        <label for="quantity" class="block text-base font-medium mb-2">
-          Kuantitas
-        </label>
+      <div>
+        <label for="quantity" class="block text-base text-white font-medium mb-2">Kuantitas</label>
         <input
           type="number"
           id="quantity"
@@ -46,10 +66,10 @@
       </button>
 
       <!-- Stock Info -->
-      <p class="text-green-400 text-sm mt-4">Stok Masih Ada</p>
+      <p class="text-green-400 text-sm">Stok Masih Ada</p>
 
       <!-- Shipping & Warranty Info -->
-      <div class="flex items-center mt-8 space-x-6">
+      <div class="flex items-center space-x-6">
         <div
           class="flex items-center space-x-2 hover:scale-105 transition-transform duration-300"
         >
