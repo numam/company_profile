@@ -70,7 +70,7 @@ defineProps({
                                 <img alt="gallery" class="w-full object-cover h-full object-center block" src="https://i.pinimg.com/736x/1b/a3/18/1ba318530d807a244b5cbdf0740179a7.jpg">
                             </div>
                             <div class="md:p-2 p-1 w-full">
-                                <img alt="gallery" class="w-full h-full object-cover object-center block" src="https://img.freepik.com/free-photo/brutal-butcher-with-tattooed-hands-offers-piece-great-raw-meat-steak-camera-other-steaks-white-craft-paper-vintage-old-wooden-grunge-table-unrecognizable_346278-1522.jpg?t=st=1736599811~exp=1736603411~hmac=6c10bd31c8d0b981073418f1bb66992f62c57f92f67246d3d7f914470a812b0e&w=900">
+                                <img alt="gallery" class="w-full h-full object-cover object-center block" src="https://i.pinimg.com/736x/c5/37/02/c5370207b2da3807fde9594482845800.jpg">
                             </div>
                         </div>
                         <div class="flex flex-wrap w-1/2">
@@ -78,10 +78,10 @@ defineProps({
                                 <img alt="gallery" class="w-full h-full object-cover object-center block" src="https://i.pinimg.com/736x/3e/12/24/3e12241ac103ade220b3c3ed9f3bbcaa.jpg">
                             </div>
                             <div class="md:p-2 p-1 w-1/2">
-                                <img alt="gallery" class="w-full object-cover h-full object-center block" src="https://img.freepik.com/free-photo/high-angle-meat-slate-with-herbs_23-2148610986.jpg?t=st=1736599742~exp=1736603342~hmac=2e6ecbc8f7fadc6f779c978672929076839dd103467e730bb8183915b7ce1fcd&w=996">
+                                <img alt="gallery" class="w-full object-cover h-full object-center block" src="https://i.pinimg.com/736x/8f/08/c1/8f08c17ae93933ad730d31c71e629b0c.jpg">
                             </div>
                             <div class="md:p-2 p-1 w-1/2">
-                                <img alt="gallery" class="w-full object-cover h-full object-center block" src="https://img.freepik.com/free-photo/beef-chunks-with-ingredients-served-table_1220-5164.jpg?t=st=1736599710~exp=1736603310~hmac=8b7632840e1d7d3ba5377eba1cd5d62fd2ad57e2496d62c88ba5fc0a3eb08e38&w=996">
+                                <img alt="gallery" class="w-full object-cover h-full object-center block" src="https://i.pinimg.com/736x/f4/dc/50/f4dc505081bb7e0719b95e7f735b66a9.jpg">
                             </div>
                         </div>
                     </div>
