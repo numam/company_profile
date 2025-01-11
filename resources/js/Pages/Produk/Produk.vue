@@ -1,8 +1,9 @@
 <template>
+
   <Head title="Produk Kami" />
   <GuestLayout />
   <div class="min-h-screen bg-primary">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="md:pt-24 md:px-20 pt-16 px-10">
       <!-- Bagian Header -->
       <div class="flex flex-col lg:flex-row w-full items-center mb-6 lg:mb-12">
         <div class="flex-1 text-center lg:text-left">
@@ -12,58 +13,49 @@
           <p class="mb-6 text-gray-400 lg:text-lg max-w-md animate-slide-in-left">
             Cara mudah untuk membeli daging berkualitas tinggi dan terjangkau untuk masakan Anda yang didukung D'MeatBoy
           </p>
-          <router-link :to="{ name: 'produk', params: { id: 1 } }">
-            <button class="px-4 py-2 lg:px-6 lg:py-3 bg-secondary text-black rounded-full hover:bg-primary hover:text-secondary transition duration-300">
-              Lihat Semua Produk
-            </button>
-          </router-link>
         </div>
         <img
           src="https://simpsonsmeats.com/cdn/shop/collections/Dry_Aged_and_Prime_Strip_Steak.jpg?v=1661459906&width=5325"
           alt="Hidangan Daging Lezat"
-          class="mt-4 lg:mt-0 ml-0 lg:ml-6 xl:ml-12 rounded shadow-lg w-full lg:w-3/5 xl:w-2/5 h-auto animate-zoom-in"
-        />
+          class="mt-4 lg:mt-0 ml-0 lg:ml-6 xl:ml-12 rounded shadow-lg w-full lg:w-3/5 xl:w-2/5 h-auto animate-zoom-in" />
       </div>
 
       <!-- Bagian Paling Populer -->
-      <Link class="mt-10">
-        <h2 class="text-xl lg:text-2xl font-semibold mb-4 text-center text-secondary animate-fade-in">Paling Populer</h2>
+      <div class="mt-10">
+        <h2 class="text-xl lg:text-2xl font-semibold mb-4 text-center text-secondary animate-fade-in">Paling Populer
+        </h2>
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          <!-- Hanya menampilkan 3 produk pertama -->
-          <div v-for="(produk, index) in produkList.slice(0, 3)" :key="index" class="bg-gray-900 shadow rounded p-4 lg:p-6 transform transition duration-500 hover:scale-105">
-            <Link :href="'/produk/' + produk.slug">
-              <img
-                :src="produk.image"
-                :alt="produk.title"
-                class="mb-4 transition-transform duration-300 hover:scale-110 w-full h-60 object-cover animate-slide-in-up"
-              />
-              <h3 class="font-bold text-lg text-white lg:text-xl animate-fade-in">{{ produk.title }}</h3>
-              <p class="text-secondary animate-fade-in">{{ produk.price }}</p>
-              <p class="text-gray-400 text-sm mt-2 line-clamp-2 animate-fade-in">{{ produk.description }}</p>
-            </Link>
-          </div>
-        </div>
-      </Link>
-
-      <!-- Menambahkan Tulisan Semua Produk -->
-      <div class="text-center mt-12">
-        <h3 class="text-2xl font-semibold text-secondary animate-fade-in">Semua Produk</h3>
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
-          <div v-for="(produk, index) in produkList" :key="index" class="bg-gray-900 shadow rounded p-4 lg:p-6 transform transition duration-500 hover:scale-105">
-            <Link :href="'/produk/' + produk.slug">
-              <img
-                :src="produk.image"
-                :alt="produk.title"
-                class="mb-4 transition-transform duration-300 hover:scale-110 w-full h-60 object-cover animate-slide-in-up"
-              />
-              <h3 class="font-bold text-lg text-white lg:text-xl animate-fade-in">{{ produk.title }}</h3>
-              <p class="text-secondary animate-fade-in">{{ produk.price }}</p>
-              <p class="text-gray-400 text-sm mt-2 line-clamp-2 animate-fade-in">{{ produk.description }}</p>
-            </Link>
+          <div v-for="(produk, index) in produkList.slice(0, 3)" :key="index">
+            <CardProduk 
+              :content="{
+                image: produk.image,
+                title: produk.title,
+                price: produk.price,
+                description: produk.description
+              }" 
+              :href="'/produk/' + produk.slug" 
+            />
           </div>
         </div>
       </div>
 
+      <!-- Menambahkan Tulisan Semua Produk -->
+      <div class="mt-12">
+        <h3 class="text-2xl font-semibold text-secondary animate-fade-in">Semua Produk</h3>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div v-for="(produk, index) in produkList" :key="index">
+            <CardProduk 
+              :content="{
+                image: produk.image,
+                title: produk.title,
+                price: produk.price,
+                description: produk.description
+              }" 
+              :href="'/produk/' + produk.slug" 
+            />
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -72,6 +64,7 @@
 import { reactive } from 'vue';
 import { Head, Link } from '@inertiajs/vue3';
 import GuestLayout from '@/Layouts/GuestLayout.vue';
+import CardProduk from '@/Components/Card/CardProduk.vue';
 
 // Daftar produk reaktif dengan lebih banyak produk
 const produkList = reactive([
@@ -131,6 +124,7 @@ const produkList = reactive([
   from {
     opacity: 0;
   }
+
   to {
     opacity: 1;
   }
@@ -141,6 +135,7 @@ const produkList = reactive([
     transform: translateX(-100%);
     opacity: 0;
   }
+
   to {
     transform: translateX(0);
     opacity: 1;
@@ -152,6 +147,7 @@ const produkList = reactive([
     transform: translateX(100%);
     opacity: 0;
   }
+
   to {
     transform: translateX(0);
     opacity: 1;
@@ -163,6 +159,7 @@ const produkList = reactive([
     transform: translateY(100%);
     opacity: 0;
   }
+
   to {
     transform: translateY(0);
     opacity: 1;
@@ -174,6 +171,7 @@ const produkList = reactive([
     transform: scale(0.8);
     opacity: 0;
   }
+
   to {
     transform: scale(1);
     opacity: 1;
