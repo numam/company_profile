@@ -54,14 +54,14 @@ const foodArticles = [
   <Head title="Artikel" />
   <GuestLayout>
     <div class="min-h-screen bg-primary">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="md:pt-10 md:px-20 pt-16 px-10">
 
         <!-- Hero Section -->
         <section class="mb-12 bg-primary rounded-lg p-10">
-          <div class="text-center text-white">
+          <div class="text-center text-secondary">
             <h1 class="text-4xl md:text-5xl font-bold mb-4">Eksplorasi Dunia Daging<br>Inspirasi Masakan dan Cerita
               Menarik</h1>
-            <p class="text-lg md:text-xl text-gray-400">Temukan berbagai tips, resep, dan cerita seputar daging untuk
+            <p class="text-lg md:text-xl text-white">Temukan berbagai tips, resep, dan cerita seputar daging untuk
               pengalaman kuliner terbaik Anda.</p>
 
           </div>
@@ -71,7 +71,7 @@ const foodArticles = [
         <div class="mb-8">
           <div class="relative max-w-xl mx-auto">
             <input type="text" placeholder="Search articles..."
-              class="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-2 text-white focus:outline-none focus:border-amber-500">
+              class="w-full bg-primary border border-secondary rounded-lg px-4 py-2 text-white focus:outline-none focus:border-amber-500">
             <button class="absolute right-3 top-1/2 transform -translate-y-1/2">
               <svg class="h-5 w-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -86,7 +86,7 @@ const foodArticles = [
           <h2 class="text-3xl font-bold mb-6 text-white">Food</h2>
           <div class="grid md:grid-cols-3 gap-6">
             <div v-for="food in foodArticles" :key="food.id"
-              class="bg-gray-800 rounded-xl overflow-hidden hover:transform hover:scale-105 transition-transform duration-300">
+              class="bg-third rounded-xl overflow-hidden hover:transform hover:scale-105 transition-transform duration-300">
               <div class="relative h-48">
                 <img :src="food.image" :alt="food.title" class="absolute inset-0 w-full h-full object-cover">
               </div>
