@@ -1,62 +1,69 @@
 <template>
   <Head title="Produk Kami" />
   <GuestLayout />
-  <div class="w-full p-4 lg:p-8 bg-primary">
-    <!-- Header Section -->
-    <div class="flex flex-col lg:flex-row w-full items-center mb-6 lg:mb-12">
-      <div class="flex-1 text-center lg:text-left">
-        <div class="inline-block bg-primary text-secondary px-4 py-2 rounded">
-          <h1 class="text-2xl lg:text-6xl font-bold mb-4 animate-fade-in">Lengkapi masakan anda</h1>
+  <div class="min-h-screen bg-primary">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <!-- Bagian Header -->
+      <div class="flex flex-col lg:flex-row w-full items-center mb-6 lg:mb-12">
+        <div class="flex-1 text-center lg:text-left">
+          <div class="inline-block bg-primary text-secondary px-4 py-2 rounded">
+            <h1 class="text-2xl lg:text-6xl font-bold mb-4 animate-fade-in">Lengkapi masakan Anda</h1>
+          </div>
+          <p class="mb-6 text-gray-400 lg:text-lg max-w-md animate-slide-in-left">
+            Cara mudah untuk membeli daging berkualitas tinggi dan terjangkau untuk masakan Anda yang didukung D'MeatBoy
+          </p>
+          <router-link :to="{ name: 'produk', params: { id: 1 } }">
+            <button class="px-4 py-2 lg:px-6 lg:py-3 bg-secondary text-black rounded-full hover:bg-primary hover:text-secondary transition duration-300">
+              Lihat Semua Produk
+            </button>
+          </router-link>
         </div>
-        <p class="mb-6 text-gray-400 lg:text-lg max-w-md animate-slide-in-left">
-          Cara mudah untuk membeli daging berkualitas tinggi dan terjangkau untuk masakan Anda yang didukung D'MeatBoy
-        </p>
-        <router-link :to="{ name: 'produk', params: { id: 1 } }">
-          <button class="px-4 py-2 lg:px-6 lg:py-3 bg-secondary text-black rounded-full hover:bg-primary hover:text-secondary transition duration-300">
-            Liat Semua Produk
-          </button>
-        </router-link>
+        <img
+          src="https://simpsonsmeats.com/cdn/shop/collections/Dry_Aged_and_Prime_Strip_Steak.jpg?v=1661459906&width=5325"
+          alt="Hidangan Daging Lezat"
+          class="mt-4 lg:mt-0 ml-0 lg:ml-6 xl:ml-12 rounded shadow-lg w-full lg:w-3/5 xl:w-2/5 h-auto animate-zoom-in"
+        />
       </div>
-      <img
-        src="https://simpsonsmeats.com/cdn/shop/collections/Dry_Aged_and_Prime_Strip_Steak.jpg?v=1661459906&width=5325"
-        alt="Delicious Meat Dishes"
-        class="mt-4 lg:mt-0 ml-0 lg:ml-6 xl:ml-12 rounded shadow-lg w-full lg:w-3/5 xl:w-2/5 h-auto animate-zoom-in"
-      />
-    </div>
 
-    <!-- Most Popular Section -->
-    <Link class="mt-10">
-      <h2 class="text-xl lg:text-2xl font-semibold mb-4 text-center text-secondary animate-fade-in">Paling Populer</h2>
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        <div v-for="(produk, index) in produkList" :key="index" class="bg-gray-900 shadow rounded p-4 lg:p-6 transform transition duration-500 hover:scale-105">
+      <!-- Bagian Paling Populer -->
+      <Link class="mt-10">
+        <h2 class="text-xl lg:text-2xl font-semibold mb-4 text-center text-secondary animate-fade-in">Paling Populer</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- Hanya menampilkan 3 produk pertama -->
+          <div v-for="(produk, index) in produkList.slice(0, 3)" :key="index" class="bg-gray-900 shadow rounded p-4 lg:p-6 transform transition duration-500 hover:scale-105">
             <Link :href="'/produk/' + produk.slug">
-                <img
-                    :src="produk.image"
-                    :alt="produk.title"
-                    class="mb-4 transition-transform duration-300 hover:scale-110 w-full h-60 object-cover animate-slide-in-up"
-                />
-                <h3 class="font-bold text-lg text-white lg:text-xl animate-fade-in">{{ produk.title }}</h3>
-                <p class="text-secondary animate-fade-in">{{ produk.price }}</p>
-                <p class="text-gray-400 text-sm mt-2 line-clamp-2 animate-fade-in">{{ produk.description }}</p>
+              <img
+                :src="produk.image"
+                :alt="produk.title"
+                class="mb-4 transition-transform duration-300 hover:scale-110 w-full h-60 object-cover animate-slide-in-up"
+              />
+              <h3 class="font-bold text-lg text-white lg:text-xl animate-fade-in">{{ produk.title }}</h3>
+              <p class="text-secondary animate-fade-in">{{ produk.price }}</p>
+              <p class="text-gray-400 text-sm mt-2 line-clamp-2 animate-fade-in">{{ produk.description }}</p>
             </Link>
+          </div>
+        </div>
+      </Link>
+
+      <!-- Menambahkan Tulisan Semua Produk -->
+      <div class="text-center mt-12">
+        <h3 class="text-2xl font-semibold text-secondary animate-fade-in">Semua Produk</h3>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
+          <div v-for="(produk, index) in produkList" :key="index" class="bg-gray-900 shadow rounded p-4 lg:p-6 transform transition duration-500 hover:scale-105">
+            <Link :href="'/produk/' + produk.slug">
+              <img
+                :src="produk.image"
+                :alt="produk.title"
+                class="mb-4 transition-transform duration-300 hover:scale-110 w-full h-60 object-cover animate-slide-in-up"
+              />
+              <h3 class="font-bold text-lg text-white lg:text-xl animate-fade-in">{{ produk.title }}</h3>
+              <p class="text-secondary animate-fade-in">{{ produk.price }}</p>
+              <p class="text-gray-400 text-sm mt-2 line-clamp-2 animate-fade-in">{{ produk.description }}</p>
+            </Link>
+          </div>
         </div>
       </div>
-    </Link>
 
-    <!-- Where Convenience Meets Quality Section -->
-    <div class="flex flex-col lg:flex-row items-center mt-10 lg:mt-16 p-4 lg:p-8 bg-primary rounded">
-      <div class="flex-1 text-center lg:text-left">
-        <h2 class="text-xl lg:text-4xl font-semibold text-secondary animate-slide-in-right">Tomahawk Steak</h2>
-        <p class="text-white lg:text-lg animate-slide-in-left">
-          Sebuah potongan daging sapi premium yang berasal dari bagian rusuk dengan tulang panjang yang menyerupai kapak (tomahawk). Potongan ini memiliki marbling yang moderat hingga kaya, memberikan rasa yang beraroma dan tekstur yang juicy.
-        </p>
-        <button class="mt-4 px-4 py-2 lg:px-6 lg:py-3 bg-secondary text-black rounded-full hover:bg-primary hover:text-secondary transition duration-300">Beli Sekarang</button>
-      </div>
-      <img
-        src="https://images.squarespace-cdn.com/content/v1/59776eeef5e2314291c86837/1720550434867-9RBC01M2R92A9NVPIZ07/double+cut+chops.jpeg?format=1000w"
-        alt="Doctor and Patient"
-        class="mt-4 lg:mt-0 ml-0 lg:ml-9 rounded shadow-lg w-full lg:w-1/2 xl:w-1/3 h-auto animate-zoom-in"
-      />
     </div>
   </div>
 </template>
@@ -66,7 +73,7 @@ import { reactive } from 'vue';
 import { Head, Link } from '@inertiajs/vue3';
 import GuestLayout from '@/Layouts/GuestLayout.vue';
 
-// Daftar produk reaktif
+// Daftar produk reaktif dengan lebih banyak produk
 const produkList = reactive([
   {
     id: 1,
@@ -82,7 +89,7 @@ const produkList = reactive([
     title: 'Prime Rib',
     image: 'https://oakavenuefarm.com/cdn/shop/collections/F47F11F4-EC03-4D10-91DC-7B8ED9522D0E.jpg?v=1729819820&width=2400',
     price: 'Rp. 13.000.000',
-    description: 'Potongan daging sapi dengan tulang besar, biasanya berasal dari bagian rusuk tengah atau belakang, cocok untuk slow-cooking atau panggang.'
+    description: 'Dikenal sebagai potongan daging yang sempurna untuk perayaan atau acara istimewa, Prime Rib memiliki cita rasa yang kaya dan tekstur yang sangat lembut, menjadikannya pilihan favorit para pecinta steak di seluruh dunia juga di kenal salah satu potongan daging sapi terbaik yang berasal dari bagian rusuk sapi.'
   },
   {
     id: 3,
@@ -91,6 +98,30 @@ const produkList = reactive([
     image: 'https://oneworlddeli.com/cdn/shop/products/DingleyDellPorkTomahawk01_DSCF4613_2000x2000_45f9463a-2e8d-46fb-98bb-9ca5e4fd8961_460x@2x.jpg?v=1652410424',
     price: 'Rp. 10.000.000',
     description: 'Potongan daging sapi khas yang masih memiliki tulang panjang, berasal dari bagian rib dengan ketebalan khusus untuk penyajian premium.'
+  },
+  {
+    id: 4,
+    slug: 'Iga (Ribs)',
+    title: 'Iga (Ribs)',
+    image: 'https://cdn.shopify.com/s/files/1/0573/8476/3576/files/4._Iga_Ribs_480x480.webp?v=1732169240',
+    price: 'Rp. 12.000.000',
+    description: 'Daging iga yang melekat di sekitar tulang rusuk memiliki tekstur yang lunak dengan banyak lemak yang mengelilinya. Meski tak sebanyak bagian sampil, daging iga juga mengandung jaringan ikat di perlekatannya dengan tulang..'
+  },
+  {
+    id: 5,
+    slug: 'Wagyu',
+    title: 'Wagyu',
+    image: 'https://www.masakapahariini.com/wp-content/uploads/2018/12/daging-wagyu-4.jpg',
+    price: 'Rp. 17.000.000',
+    description: 'Daging Wagyu adalah jenis daging sapi premium yang terkenal karena kualitasnya yang sangat tinggi, terutama dalam hal kelembutan dan marbling (lemak intramuskular). Wagyu berasal dari Jepang dan merupakan hasil dari pemeliharaan sapi dengan perhatian khusus terhadap diet dan teknik pemeliharaan yang unik. Marbling pada daging Wagyu memberikan rasa yang kaya dan tekstur yang sangat lembut, membuatnya sangat dihargai di dunia kuliner. '
+  },
+  {
+    id: 6,
+    slug: 'T-Bone',
+    title: 'T-Bone',
+    image: 'https://imgx.parapuan.co/crop/0x0:0x0/x/photo/2021/07/03/raw-meat-tbone-steak-and-cleaver-20210703041431.jpg',
+    price: 'Rp. 7.500.000',
+    description: 'Daging T-Bone adalah potongan daging sapi yang berasal dari bagian belakang tulang belakang sapi, tepatnya dari bagian loin dan short loin. Daging ini dinamakan "T-Bone" karena memiliki bentuk tulang yang menyerupai huruf "T", dengan dua potongan daging di kedua sisi tulang tersebut, T-Bone sangat cocok untuk dipanggang atau dipanggang di atas grill. Keberadaan tulang membuat daging ini lebih juicy saat dimasak. Potongan ini juga sering dijadikan pilihan steak premium di restoran steakhouse.'
   },
 ]);
 </script>
