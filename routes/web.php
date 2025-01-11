@@ -4,6 +4,9 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CompanyProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Api\ArtikelController;
+
+
 use Inertia\Inertia;
 
 // Halaman Publik Company Profile
@@ -26,6 +29,10 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/dashboard', function () {
         return Inertia::render('Dashboard');
     })->name('dashboard');
+    
+    Route::prefix('artikel')->group(function (){
+        Route::get('/', [ArtikelController::class, 'index'])->name('artikel.index');
+    });
 
     // Profile routes
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
