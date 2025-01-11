@@ -35,7 +35,7 @@ onBeforeUnmount(() => {
     <button
       v-if="showBackToTop"
         @click="scrollToTop"
-        class="fixed bottom-4 right-4 p-3 rounded-full bg-primary text-white transition"
+        class="fixed bottom-4 right-4 p-3 rounded-full bg-secondary text-white transition"
         aria-label="Back to Top"
     >
       ⬆
