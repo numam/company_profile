@@ -50,15 +50,7 @@ const submit = () => {
                     />
                 </div>
 
-                <!-- Forgot Password -->
-                <div class="text-right">
-                    <Link
-                        :href="route('password.request')"
-                        class="text-sm text-secondary hover:underline"
-                    >
-                        Forgot Password?
-                    </Link>
-                </div>
+            
 
                 <!-- Tombol Login -->
                 <button
