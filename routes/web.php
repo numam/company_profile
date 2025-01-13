@@ -36,7 +36,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::get('/artikel/{slug}', [ArtikelController::class, 'adminShow'])->name('artikel.show');
         Route::get('/artikel/{slug}/edit', [ArtikelController::class, 'edit'])->name('artikel.edit');
         Route::put('/artikel/{slug}', [ArtikelController::class, 'update'])->name('artikel.update');
-        Route::delete('/artikel/{slug}', [ArtikelController::class, 'destroy'])->name('artikel.destroy');
+        Route::delete('/artikel/{slug}/destroy', [ArtikelController::class, 'destroy'])->name('artikel.destroy');
         Route::get('/artikel/search', [ArtikelController::class, 'search'])->name('artikel.search');
 
         Route::get('/produk', [ProdukController::class, 'index'])->name('produk.index');
@@ -45,7 +45,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::get('/produk/{slug}', [ProdukController::class, 'show'])->name('produk.show');
         Route::get('/produk/{slug}/edit', [ProdukController::class, 'edit'])->name('produk.edit');
         Route::put('/produk/{slug}', [ProdukController::class, 'update'])->name('produk.update');
-        Route::delete('/produk/{slug}', [ProdukController::class, 'destroy'])->name('produk.destroy');
+        Route::delete('/produk/{slug}/destroy', [ProdukController::class, 'destroy'])->name('produk.destroy');
     });
 
     // Profile routes
