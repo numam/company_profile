@@ -5,76 +5,179 @@ namespace App\Http\Controllers\Api;
 use App\Models\Artikel;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Inertia\Inertia;
+use Illuminate\Support\Str;
 
 class ArtikelController extends Controller
 {
-    // Menampilkan semua artikel
-    // public function index()
-    // {
-    //     $artikels = Artikel::all(); // Ambil semua data artikel
-    //     // return response()->json($artikels); // Kembalikan sebagai JSON
-    //     return Inertia::render('Dashboard/Artikel/Index'[
-    //         'artikels' => $artikels
-    //     ]);
-    // }
-
-    public function index(Request $request)
+    public function index()
     {
-        $artikel = app(GetArtikel::class)->execute($request->all());
+        $artikels = Artikel::latest()->get();
+        return response()->json($artikels);
+    }
 
+    public function adminIndex()
+    {
+        $artikels = Artikel::latest()->get();
         return Inertia::render('Dashboard/Artikel/Index', [
             'artikels' => $artikels
-        ]); 
+        ]);
     }
 
-    // Menampilkan detail artikel berdasarkan ID
-    public function show(Artikel $artikel)
+    public function create()
     {
-        return response()->json($artikel); // Kembalikan data artikel dalam format JSON
+        return Inertia::render('Dashboard/Artikel/Create');
     }
 
-    // Menyimpan artikel baru ke database
+    public function show($slug)
+    {
+        $artikel = Artikel::where('slug', $slug)->firstOrFail();
+        return response()->json($artikel);
+    }
+
+    public function adminShow($slug)
+    {
+        $artikel = Artikel::where('slug', $slug)->firstOrFail();
+        return Inertia::render('Dashboard/Artikel/Show', [
+            'artikel' => $artikel
+        ]);
+    }
+
     public function store(Request $request)
     {
         $request->validate([
-            'slug' => 'required|string|unique:artikels,slug',
             'title' => 'required|string|max:255',
             'excerpt' => 'required|string',
-            'image' => 'required|url', 
+            'image' => 'required|url',
             'date' => 'required|date',
         ]);
 
-        $artikel = Artikel::create($request->all()); // Simpan data artikel baru
-        return response()->json([
-            'message' => 'Artikel berhasil dibuat.',
-            'data' => $artikel,  // Menampilkan data artikel yang baru dibuat
-        ],);
+        $slug = Str::slug($request->title);
+        $originalSlug = $slug;
+        $count = 1;
+
+        while (Artikel::where('slug', $slug)->exists()) {
+            $slug = $originalSlug . '-' . $count;
+            $count++;
+        }
+
+        $artikel = Artikel::create([
+            'title' => $request->title,
+            'slug' => $slug,
+            'excerpt' => $request->excerpt,
+            'image' => $request->image,
+            'date' => $request->date,
+        ]);
+
+        if ($request->wantsJson()) {
+            return response()->json([
+                'message' => 'Artikel berhasil dibuat.',
+                'data' => $artikel,
+            ]);
+        }
+
+        return redirect()->route('dashboard.artikel.index')
+            ->with('message', 'Artikel berhasil dibuat.');
     }
 
-    // Memperbarui data artikel
-    public function update(Request $request, Artikel $artikel)
+    public function edit($slug)
     {
+        $artikel = Artikel::where('slug', $slug)->firstOrFail();
+        return Inertia::render('Dashboard/Artikel/Edit', [
+            'artikel' => $artikel
+        ]);
+    }
+
+    public function update(Request $request, $slug)
+    {
+        $artikel = Artikel::where('slug', $slug)->firstOrFail();
+
         $request->validate([
-            'slug' => 'required|string|unique:artikels,slug',
-            'title' => 'sometimes|string|max:255',
-            'excerpt' => 'sometimes|string',
-            'image' => 'sometimes|url',
-            'date' => 'sometimes|date',
+            'title' => 'required|string|max:255',
+            'excerpt' => 'required|string',
+            'image' => 'required|url',
+            'date' => 'required|date',
         ]);
 
-        $artikel->update($request->all()); // Update data artikel
-        return response()->json([
-            'message' => 'Artikel berhasil diperbarui.',
-            'data' => $artikel,  // Menampilkan data artikel yang telah diperbarui
+        if ($request->title !== $artikel->title) {
+            $newSlug = Str::slug($request->title);
+            $originalSlug = $newSlug;
+            $count = 1;
+
+            while (Artikel::where('slug', $newSlug)
+                         ->where('id', '!=', $artikel->id)
+                         ->exists()) {
+                $newSlug = $originalSlug . '-' . $count;
+                $count++;
+            }
+
+            $artikel->slug = $newSlug;
+        }
+
+        $artikel->title = $request->title;
+        $artikel->excerpt = $request->excerpt;
+        $artikel->image = $request->image;
+        $artikel->date = $request->date;
+        $artikel->save();
+
+        if ($request->wantsJson()) {
+            return response()->json([
+                'message' => 'Artikel berhasil diperbarui.',
+                'data' => $artikel,
+            ]);
+        }
+
+        return redirect()->route('dashboard.artikel.index')
+            ->with('message', 'Artikel berhasil diperbarui.');
+    }
+
+    public function destroy($slug)
+    {
+        $artikel = Artikel::where('slug', $slug)->firstOrFail();
+        $artikel->delete();
+
+        if (request()->wantsJson()) {
+            return response()->json([
+                'message' => 'Artikel berhasil dihapus.'
+            ]);
+        }
+
+        return redirect()->route('dashboard.artikel.index')
+            ->with('message', 'Artikel berhasil dihapus.');
+    }
+
+    public function publicIndex()
+    {
+        $artikels = Artikel::latest()->paginate(9);
+        return Inertia::render('Artikel/Artikel', [
+            'artikels' => $artikels
         ]);
     }
 
-    // Menghapus data artikel
-    public function destroy(Artikel $artikel)
+    public function publicShow($slug)
     {
-        $artikel->delete(); // Hapus data artikel
-        return response()->json([
-            'message' => 'Artikel berhasil dihapus.'
+        $artikel = Artikel::where('slug', $slug)->firstOrFail();
+        return Inertia::render('Artikel/ArtikelDetail', [
+            'artikel' => $artikel
+        ]);
+    }
+
+    public function search(Request $request)
+    {
+        $query = $request->input('query');
+
+        $artikels = Artikel::where('title', 'LIKE', "%{$query}%")
+            ->orWhere('excerpt', 'LIKE', "%{$query}%")
+            ->latest()
+            ->get();
+
+        if ($request->wantsJson()) {
+            return response()->json($artikels);
+        }
+
+        return Inertia::render('Dashboard/Artikel/Index', [
+            'artikels' => $artikels,
+            'searchQuery' => $query
         ]);
     }
 }
