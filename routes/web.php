@@ -2,11 +2,9 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CompanyProfileController;
-use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\ArtikelController;
-
-
+use App\Http\Controllers\Api\ProdukController;
 use Inertia\Inertia;
 
 // Halaman Publik Company Profile
@@ -14,10 +12,10 @@ Route::controller(CompanyProfileController::class)->group(function () {
     Route::get('/', 'index')->name('home');
     Route::get('/about', 'about')->name('about');
     Route::get('/layanan', [CompanyProfileController::class, 'layanan'])->name('layanan');
-    Route::get('/produk', [CompanyProfileController::class, 'produk'])->name('produk');
-    Route::get('/produk/{slug}', [CompanyProfileController::class, 'produkDetail'])->name('produk.detail');
-    Route::get('/artikel', [CompanyProfileController::class, 'artikel'])->name('artikel');
-    Route::get('/artikel/{slug}', [CompanyProfileController::class, 'artikelDetail'])->name('artikel.detail');
+    Route::get('/produk', [ProdukController::class, 'publicIndex'])->name('produk');
+    Route::get('/produk/{slug}', [ProdukController::class, 'publicShow'])->name('produk.detail');
+    Route::get('/artikel', [ArtikelController::class, 'publicIndex'])->name('artikel');
+    Route::get('/artikel/{slug}', [ArtikelController::class, 'publicShow'])->name('artikel.detail');
     Route::get('/tentang', [CompanyProfileController::class, 'tentang'])->name('tentang');
     Route::get('/portfolio', 'portfolio')->name('portfolio');
     Route::get('/contact', 'contact')->name('contact');
@@ -29,9 +27,25 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/dashboard', function () {
         return Inertia::render('Dashboard');
     })->name('dashboard');
-    
-    Route::prefix('artikel')->group(function (){
-        Route::get('/', [ArtikelController::class, 'index'])->name('artikel.index');
+
+    // Routes untuk dashboard admin artikel dan produk
+    Route::prefix('dashboard')->name('dashboard.')->group(function () {
+        Route::get('/artikel', [ArtikelController::class, 'adminIndex'])->name('artikel.index');
+        Route::get('/artikel/create', [ArtikelController::class, 'create'])->name('artikel.create');
+        Route::post('/artikel', [ArtikelController::class, 'store'])->name('artikel.store');
+        Route::get('/artikel/{slug}', [ArtikelController::class, 'adminShow'])->name('artikel.show');
+        Route::get('/artikel/{slug}/edit', [ArtikelController::class, 'edit'])->name('artikel.edit');
+        Route::put('/artikel/{slug}', [ArtikelController::class, 'update'])->name('artikel.update');
+        Route::delete('/artikel/{slug}', [ArtikelController::class, 'destroy'])->name('artikel.destroy');
+        Route::get('/artikel/search', [ArtikelController::class, 'search'])->name('artikel.search');
+
+        Route::get('/produk', [ProdukController::class, 'index'])->name('produk.index');
+        Route::get('/produk/create', [ProdukController::class, 'create'])->name('produk.create');
+        Route::post('/produk', [ProdukController::class, 'store'])->name('produk.store');
+        Route::get('/produk/{slug}', [ProdukController::class, 'show'])->name('produk.show');
+        Route::get('/produk/{slug}/edit', [ProdukController::class, 'edit'])->name('produk.edit');
+        Route::put('/produk/{slug}', [ProdukController::class, 'update'])->name('produk.update');
+        Route::delete('/produk/{slug}', [ProdukController::class, 'destroy'])->name('produk.destroy');
     });
 
     // Profile routes
