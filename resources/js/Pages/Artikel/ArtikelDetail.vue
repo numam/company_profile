@@ -1,6 +1,7 @@
 <script setup>
 import { Head, Link } from '@inertiajs/vue3';
 import GuestLayout from '@/Layouts/GuestLayout.vue';
+import Footer from '@/Components/Footer.vue';
 
 const props = defineProps({
   artikel: Object,
@@ -74,4 +75,5 @@ const formatDate = (date) => {
       </div>
     </div>
   </GuestLayout>
+  <Footer />
 </template>

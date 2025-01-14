@@ -1,6 +1,7 @@
 <script setup>
 import { Head, Link } from '@inertiajs/vue3';
 import GuestLayout from '@/Layouts/GuestLayout.vue';
+import Footer from '@/Components/Footer.vue';
 
 // Ambil data dari props
 defineProps({
@@ -20,7 +21,7 @@ const formatDate = (date) => {
 <template>
   <Head title="Artikel" />
   <GuestLayout>
-    <div class="min-h-screen bg-primary">
+    <div class="min-h-screen bg-primary w-full">
       <div class="md:pt-10 md:px-20 pt-16 px-10">
         <!-- Hero Section -->
         <section class="mb-12 bg-primary rounded-lg p-10">
@@ -89,4 +90,5 @@ const formatDate = (date) => {
       </div>
     </div>
   </GuestLayout>
+  <Footer />
 </template>

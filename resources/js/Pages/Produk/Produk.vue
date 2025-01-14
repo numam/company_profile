@@ -1,7 +1,8 @@
 <script setup>
-import { Head, Link } from '@inertiajs/vue3';
+import { Head } from '@inertiajs/vue3';
 import GuestLayout from '@/Layouts/GuestLayout.vue';
 import CardProduk from '@/Components/Card/CardProduk.vue';
+import Footer from '@/Components/Footer.vue';
 
 defineProps({
   produks: Object
@@ -38,18 +39,19 @@ defineProps({
         <h3 class="text-2xl font-semibold text-secondary animate-fade-in mb-5">Semua Produk</h3>
           <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           <div v-for="item in produks" :key="item.id">
-            <CardProduk 
+            <CardProduk
               :content="{
                 image: item.image,
                 title: item.title,
                 price: item.price,
                 description: item.description
-              }" 
-              :href="'/produk/' + item.slug" 
+              }"
+              :href="'/produk/' + item.slug"
             />
           </div>
         </div>
       </div>
     </div>
   </div>
+  <Footer />
 </template>

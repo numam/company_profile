@@ -2,6 +2,7 @@
 import { Head } from '@inertiajs/vue3';
 import GuestLayout from '@/Layouts/GuestLayout.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
+import Footer from '@/Components/Footer.vue';
 </script>
 
 <template>
@@ -145,17 +146,6 @@ import PrimaryButton from '@/Components/PrimaryButton.vue';
         </div>
       </div>
     </section>
-
-    <!-- Footer -->
-    <footer class="bg-primary text-gray-100 py-6 md:py-8">
-      <div class="container mx-auto text-center">
-        <p>&copy; 2025 D'MeatBoy | Semua Hak Dilindungi</p>
-        <div class="mt-4">
-          <a href="#" class="text-gray-400 hover:text-secondary mx-2 sm:mx-4">Instagram</a>
-          <a href="#" class="text-gray-400 hover:text-secondary mx-2 sm:mx-4">Facebook</a>
-          <a href="#" class="text-gray-400 hover:text-secondary mx-2 sm:mx-4">Twitter</a>
-        </div>
-      </div>
-    </footer>
   </div>
+  <Footer />
 </template>

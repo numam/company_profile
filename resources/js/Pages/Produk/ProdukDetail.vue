@@ -112,12 +112,14 @@
       </div>
     </div>
   </section>
+  <Footer />
 </template>
 
 <script setup>
 import { defineProps } from 'vue';
 import { Head } from '@inertiajs/vue3';
 import GuestLayout from '@/Layouts/GuestLayout.vue';
+import Footer from '@/Components/Footer.vue';
 
 defineProps({
   produk: Object,
