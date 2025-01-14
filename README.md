@@ -1,55 +1,79 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Company Profile Premium Meat Shop
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Premium Meat Shop adalah proyek pengelolaan dan penjualan daging premium yang dikembangkan untuk memudahkan pengecer dan konsumen dalam memilih dan membeli produk daging berkualitas tinggi. Proyek ini bertujuan untuk menyediakan platform yang user-friendly dengan fitur-fitur seperti katalog produk, sistem pemesanan, dan manajemen stok. Daging yang dijual berasal dari pemasok terpercaya, menjamin kualitas dan kesegaran. Pengguna dapat menjelajahi berbagai pilihan potongan daging, mendapatkan informasi detail tentang produk, serta melakukan pembelian dengan mudah. Proyek ini dirancang dengan teknologi web modern dan bertujuan untuk memberikan pengalaman berbelanja yang memuaskan bagi pelanggan Premium Meat Shop.
 
-## About Laravel
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Tech Stack
 
-## Learning Laravel
+**Client:** Vue, Laravel, Inertia, TailwindCSS
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+**Server:** Node
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## Run Locally
 
-## Laravel Sponsors
+Clone the project
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+```bash
+  git clone https://github.com/numam/company_profile.git
+```
 
-### Premium Partners
+Go to the project directory
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+```bash
+  cd company_profile
+```
 
-## Setup Project
+switch to develop branch
 
-1. Clone repository
-2. composer install
+```bash
+  git checkout develop
+```
+
+Install dependencies
+
+```bash
+  composer install
+  npm install
+```
+
+Migrate database
+
+```bash
+  php artisan migrate
+```
+
+Start the server
+
+```bash
+  npm run dev
+  php artisan serve
+```
+
+
+## Spesifikasi Projek
+
+    1. Landing Page
+       - Menampilkan produk unggulan (daging premium) yang dapat dipilih oleh pengguna
+       - Navigasi yang jelas untuk memudahkan akses ke halaman produk, artikel, dan checkout.
+
+    2. CRUD Produk
+       - Tambah Produk: Admin dapat menambah produk baru (daging premium) dengan informasi seperti nama, kategori, harga, deskripsi, gambar.
+       - Edit Produk: Admin dapat mengubah informasi produk yang sudah ada.
+       - Hapus Produk: Admin dapat menghapus produk yang tidak lagi tersedia atau tidak relevan.
+       - Tampilkan Produk: Pengguna dapat melihat daftar produk yang tersedia.
+       - Detail Produk: Setiap produk memiliki halaman detail dengan informasi lengkap dan gambar.
+
+    3. CRUD Artikel
+       - Tambah Artikel: Admin dapat menambahkan artikel terkait daging premium, resep, tips masakan, atau berita lainnya.
+       - Edit Artikel: Admin dapat mengedit artikel yang sudah dipublikasikan.
+       - Hapus Artikel: Admin dapat menghapus artikel yang sudah tidak relevan atau usang.
+       - Tampilkan Artikel: Pengguna dapat membaca artikel-artikel yang dipublikasikan di website.
+
+    4. Registrasi dan Login
+       - Form Registrasi: Pengguna baru dapat mendaftar dengan memasukkan nama, email, password, dan informasi terkait lainnya.
+       - Form Login: Pengguna yang sudah terdaftar dapat login dengan menggunakan email dan password.
+       - Autentikasi Pengguna: Menggunakan sistem autentikasi yang aman untuk login dan logout.
+
