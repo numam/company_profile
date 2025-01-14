@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Artikel;
+use App\Models\Produk;
 use Inertia\Inertia;
 use Illuminate\Http\Request;
 
@@ -9,34 +11,12 @@ class CompanyProfileController extends Controller
 {
     public function index()
     {
-        return Inertia::render('Home', [
-            'title' => 'Welcome to Our Company',
-            'heroContent' => [
-                'heading' => 'Building The Future Together',
-                'description' => 'We are committed to delivering innovative solutions for your business needs.'
-            ],
-            'stats' => [
-                ['label' => 'Years Experience', 'value' => '10+'],
-                ['label' => 'Projects Completed', 'value' => '500+'],
-                ['label' => 'Happy Clients', 'value' => '300+'],
-                ['label' => 'Team Members', 'value' => '50+']
-            ]
-        ]);
-    }
+        $produks = Produk::latest()->take(3)->get();
+        $artikels = Artikel::latest()->take(3)->get();
 
-    public function about()
-    {
-        return Inertia::render('About', [
-            'content' => [
-                'mission' => 'To provide cutting-edge solutions that empower businesses',
-                'vision' => 'To become the leading technology partner for businesses worldwide',
-                'values' => [
-                    'Innovation',
-                    'Integrity',
-                    'Excellence',
-                    'Customer Focus'
-                ]
-            ]
+        return Inertia::render('Home', [
+            'produks' => $produks,
+            'artikels' =>  $artikels
         ]);
     }
 
@@ -47,31 +27,6 @@ class CompanyProfileController extends Controller
         ]);
     }
 
-    public function produk()
-    {
-        return Inertia::render('Produk/Produk', [
-
-        ]);
-    }
-
-    public function produkDetail($slug)
-    {
-        // Contoh data produk berdasarkan slug
-        $produk = [
-            'slug' => $slug,
-            'title' => 'Produk ' . ucfirst($slug),
-            'description' => 'Deskripsi untuk produk ' . ucfirst($slug),
-            'price' => 'Rp ' . (100000 * rand(1, 10)),
-            'image' => 'path/to/image.jpg'
-        ];
-
-        return Inertia::render('Produk/ProdukDetail', [
-            'produk' => $produk
-        ]);
-    }
-
-
-
     public function tentang()
     {
         return Inertia::render('Tentang/TentangKami', [
@@ -79,66 +34,4 @@ class CompanyProfileController extends Controller
         ]);
     }
 
-
-    public function artikel()
-    {
-        return Inertia::render('Artikel/Artikel');
-    }
-
-    public function artikelDetail($slug)
-    {
-        // Contoh data produk berdasarkan slug
-        $artikel = [
-            'slug' => $slug,
-            'title' => 'Artikel ' . ucfirst($slug),
-            'description' => 'Deskripsi untuk produk ' . ucfirst($slug),
-            'image' => 'path/to/image.jpg'
-        ];
-
-        return Inertia::render('Artikel/ArtikelDetail', [
-            'produk' => $artikel
-        ]);
-    }
-
-    public function contact()
-    {
-        return Inertia::render('Contact');
-    }
-
-    public function submitContact(Request $request)
-    {
-        $validated = $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|email',
-            'message' => 'required|string',
-            'subject' => 'required|string|max:255'
-        ]);
-
-        // Di sini Anda bisa menambahkan logika untuk:
-        // 1. Menyimpan pesan ke database
-        // 2. Mengirim email notifikasi
-        // 3. Dll
-
-        return redirect()->back()->with('success', 'Thank you for your message. We will get back to you soon!');
-    }
-
-    // public function portfolio()
-    // {
-    //     return Inertia::render('Portfolio', [
-    //         'projects' => [
-    //             [
-    //                 'title' => 'E-Commerce Platform',
-    //                 'description' => 'Built a full-featured online shopping platform',
-    //                 'image' => 'portfolio/ecommerce.jpg',
-    //                 'category' => 'Web Development'
-    //             ],
-    //             [
-    //                 'title' => 'Mobile Banking App',
-    //                 'description' => 'Developed secure mobile banking solution',
-    //                 'image' => 'portfolio/banking.jpg',
-    //                 'category' => 'Mobile Development'
-    //             ],
-    //         ]
-    //     ]);
-    // }
 }
