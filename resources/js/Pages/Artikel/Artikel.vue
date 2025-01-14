@@ -6,6 +6,15 @@ import GuestLayout from '@/Layouts/GuestLayout.vue';
 defineProps({
   artikels: Object,
 });
+
+const formatDate = (date) => {
+  return new Date(date).toLocaleDateString('id-ID', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  });
+};
+
 </script>
 
 <template>
@@ -61,9 +70,9 @@ defineProps({
                 <img :src="food.image" :alt="food.title" class="absolute inset-0 w-full h-full object-cover" />
               </div>
               <div class="p-6">
-                <p class="text-secondary text-sm mb-2">{{ food.date }}</p>
+                <p class="text-secondary text-sm mb-2">{{ formatDate (food.date) }}</p>
                 <h3 class="text-white text-xl font-bold mb-3">{{ food.title }}</h3>
-                <p class="text-gray-400 text-sm mb-4">{{ food.excerpt }}</p>
+                <p class="text-gray-400 text-sm mb-4 line-clamp-2 ">{{ food.excerpt }}</p>
                 <Link
                   :href="'/artikel/' + food.slug"
                   class="hover:text-amber-400 text-secondary transition-colors inline-flex items-center"
