@@ -20,7 +20,7 @@ defineProps({
       <!-- Bagian Header -->
       <div class="flex flex-col lg:flex-row w-full items-center mb-6 lg:mb-12">
         <div class="flex-1 text-center lg:text-left">
-          <div class="inline-block bg-primary text-secondary px-4 py-2 rounded">
+          <div class="inline-block bg-primary text-secondary py-2 rounded">
             <h1 class="text-2xl lg:text-6xl font-bold mb-4 animate-fade-in">Lengkapi masakan Anda</h1>
           </div>
           <p class="mb-6 text-gray-400 lg:text-lg max-w-md animate-slide-in-left">
