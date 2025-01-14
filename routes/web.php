@@ -17,9 +17,6 @@ Route::controller(CompanyProfileController::class)->group(function () {
     Route::get('/artikel', [ArtikelController::class, 'publicIndex'])->name('artikel');
     Route::get('/artikel/{slug}', [ArtikelController::class, 'publicShow'])->name('artikel.detail');
     Route::get('/tentang', [CompanyProfileController::class, 'tentang'])->name('tentang');
-    Route::get('/portfolio', 'portfolio')->name('portfolio');
-    Route::get('/contact', 'contact')->name('contact');
-    Route::post('/contact', 'submitContact')->name('contact.submit');
 });
 
 // Halaman yang membutuhkan auth
